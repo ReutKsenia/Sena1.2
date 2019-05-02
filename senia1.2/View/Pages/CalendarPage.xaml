@@ -1,0 +1,29 @@
+﻿<Page x:Class="senia1._2.View.Pages.CalendarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:senia1._2.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Width="{Binding RelativeSource={RelativeSource AncestorType=Frame}, Path=Width}" 
+      Height="{Binding RelativeSource={RelativeSource AncestorType=Frame}, Path=Height}"
+      Title="CalendarPage">
+
+    <Grid>
+        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Foreground="{DynamicResource BaseWhiteBrush}"
+                   Width="280" 
+                   Height="371" Background="#FF8625A8" Margin="255,52,0,0">
+            <Calendar.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Calendar.BorderBrush>
+        </Calendar>
+
+    </Grid>
+</Page>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:senia1._2.View.Styles">
+    
+    <LinearGradientBrush x:Key="VioletGadientBrush"  EndPoint="0.945,0.938" StartPoint="-0.001,0.046">
+        <GradientStop Color="#FF4854A1" Offset="0"/>
+        <GradientStop Color="#FF9A31AB" Offset="0.873"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="VioletBrush" Color="#FF7141A4"/>
+    <Color x:Key="VioletColor">#FF7141A4</Color>
+
+    <SolidColorBrush x:Key="BaseWhiteBrush" Color="#FFFFFFFF"/>
+    <Color x:Key="BaseWhite">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="LightVioletBrush" Color="#FFC7A9E7"/>
+    <Color x:Key="LightVioletColor">#FFC7A9E7</Color>
+
+
+</ResourceDictionary>

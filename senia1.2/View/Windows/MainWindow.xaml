@@ -1,0 +1,222 @@
+﻿<Window x:Class="senia1._2.View.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:senia1._2.ViewModel"
+        xmlns:local="clr-namespace:senia1._2"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        AllowsTransparency="True" 
+        Height="750" 
+        Width="1100" 
+        FontSize="{DynamicResource Smal}" 
+        FontFamily="{DynamicResource BaseFont}" 
+        Background="{x:Null}" 
+        Icon="/senia1.2;component/View/Images/icons8-s-96.ico" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
+        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="OnMaximizeWindow"/>
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" Executed="OnMinimizeWindow"/>
+    </Window.CommandBindings>
+    <Window.DataContext>
+        <viewmodel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <DockPanel>
+            <Border
+                BorderThickness="0" 
+                CornerRadius="18" 
+                DockPanel.Dock="Top" 
+                Background="{DynamicResource BaseWhiteBrush}">
+                <DockPanel>
+                    <Grid>
+                        <Border
+                            DockPanel.Dock="Left" 
+                            BorderThickness="0" 
+                            CornerRadius="18" 
+                            Width="278" 
+                            Margin="0,0,0.4,0"
+                            Background="{DynamicResource VioletGadientBrush}">
+                            <StackPanel
+                                HorizontalAlignment="Left" 
+                                ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                ScrollViewer.CanContentScroll="True" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Width="278">
+                                <Ellipse
+                                    HorizontalAlignment="Left" 
+                                    Height="150" 
+                                    Margin="65,30.587,0,0" 
+                                    VerticalAlignment="Top" 
+                                    Width="150">
+                                    <Ellipse.Fill>
+                                        <ImageBrush  ImageSource="/senia1.2;component/View/Images/doutzen-kroes-victoria-s-7073.jpg" Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Label 
+                                    Content="UserName" 
+                                    HorizontalAlignment="Left" 
+                                    Height="54.561" 
+                                    VerticalAlignment="Top" 
+                                    Width="277" 
+                                    Foreground="{DynamicResource BaseWhiteBrush}" 
+                                    Background="{x:Null}" 
+                                    FontSize="{DynamicResource Regular}" 
+                                    VerticalContentAlignment="Center" 
+                                    HorizontalContentAlignment="Center"/>
+                                <RadioButton
+                                    Template="{DynamicResource RadioButtonMenu}"
+                                    Command="{Binding MenuToday_Click}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image 
+                                            Source="/senia1.2;component/View/Images/today.png" 
+                                            Height="54"
+                                            Margin="3,0,0,0" Width="65" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock 
+                                            Text="Сегодня"
+                                            Foreground="{DynamicResource BaseWhiteBrush}"
+                                            FontSize="{DynamicResource H1}" 
+                                            VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton
+                                    Template="{DynamicResource RadioButtonMenu}"
+                                    Height="61"
+                                    Command="{Binding MenuNextSevanDays_Click}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image 
+                                            Source="/senia1.2;component/View/Images/icons8-список-задач-64.png"
+                                            Margin="13,3,0,0" Height="48" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock 
+                                            Text="Следующие 7 дней"
+                                            Foreground="{DynamicResource BaseWhiteBrush}"
+                                            FontSize="{DynamicResource H1}" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Margin="9,0,0,0"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton
+                                    Template="{DynamicResource RadioButtonMenu}"
+                                    Height="61"
+                                    Command="{Binding MenuCalendar_Click}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image 
+                                            Source="/senia1.2;component/View/Images/icons8-календарь-80.png"
+                                            Margin="10,1,0,-0.2" Width="57"/>
+                                        <TextBlock 
+                                            Text="Календарь"
+                                            Foreground="{DynamicResource BaseWhiteBrush}"
+                                            FontSize="{DynamicResource H1}" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton
+                                    Template="{DynamicResource RadioButtonMenu}"
+                                    Height="61">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image 
+                                            Source="/senia1.2;component/View/Images/icons8-журнал-80.png"
+                                            Margin="10,1,0,-0.2" Width="61"/>
+                                        <TextBlock 
+                                            Text="Блокнот"
+                                            Foreground="{DynamicResource BaseWhiteBrush}"
+                                            FontSize="{DynamicResource H1}" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <Expander 
+                                    Height="166.63" 
+                                    VerticalAlignment="Top" 
+                                    Width="277"
+                                    Background="{x:Null}" 
+                                    Foreground="{DynamicResource BaseWhiteBrush}" 
+                                    Style="{DynamicResource ExpanderStyle1}" 
+                                    RenderTransformOrigin="0.5,0.5" 
+                                    FontSize="{DynamicResource H1}" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                    Cursor="Hand"
+                                    Header="Списки дел">
+                                    <ScrollViewer
+                                        Margin="0,0,-2.4,10" 
+                                        Height="84.87" 
+                                        Foreground="{DynamicResource BaseWhiteBrush}">
+                                        <StackPanel>
+                                            <ListBox></ListBox>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Expander>
+                            </StackPanel>
+                        </Border>
+                        <Label
+                            Content="" 
+                            HorizontalAlignment="Left" 
+                            Height="37" 
+                            VerticalAlignment="Top" 
+                            Width="41" 
+                            Foreground="{DynamicResource BaseWhiteBrush}" 
+                            VerticalContentAlignment="Center" 
+                            HorizontalContentAlignment="Center" 
+                            FontSize="{DynamicResource Big}" 
+                            Margin="14,250,0,0"/>
+                    </Grid>
+
+                    <Border 
+                        DockPanel.Dock="Top" 
+                        BorderThickness="0" 
+                        Height="90" 
+                        Margin="-0.4,0,0,0">
+                        <DockPanel>
+                            <Button 
+                                DockPanel.Dock="Right" 
+                                x:Name="Exit" 
+                                Content="{DynamicResource ExitIcon2}" 
+                                Height="36" 
+                                VerticalAlignment="Top" 
+                                Width="36" 
+                                Template="{DynamicResource ButtonControl}" 
+                                HorizontalAlignment="Right" 
+                                Margin="0,5,7.4,0"
+                                Background="{DynamicResource VioletBrush}"
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                            <Button 
+                                DockPanel.Dock="Right" 
+                                x:Name="MaximizedState"
+                                Content="{DynamicResource ExpandIcon}" 
+                                HorizontalAlignment="Right" 
+                                Height="36" 
+                                VerticalAlignment="Top" 
+                                Width="39" 
+                                Template="{DynamicResource ButtonControl}"
+                                Margin="4,5,0,0"
+                                Command="{x:Static SystemCommands.MaximizeWindowCommand}"/>
+                            <Button
+                                DockPanel.Dock="Right"
+                                Content="{DynamicResource RllupIcon}" 
+                                Height="38" 
+                                VerticalAlignment="Top" 
+                                Width="34" 
+                                Template="{DynamicResource ButtonControl}" 
+                                HorizontalAlignment="Right" 
+                                Margin="0"
+                                Background="{DynamicResource VioletBrush}"
+                                Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
+                        </DockPanel>
+                    </Border>
+                    <Frame
+                        NavigationUIVisibility="Hidden"
+                        Content="{Binding CurrentPage}"
+                        Opacity="{Binding FrameOpacity}"/>
+                </DockPanel>
+            </Border>
+        </DockPanel>
+
+    </Grid>
+</Window>
