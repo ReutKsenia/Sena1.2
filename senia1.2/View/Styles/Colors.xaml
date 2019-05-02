@@ -15,5 +15,8 @@
     <SolidColorBrush x:Key="LightVioletBrush" Color="#FFC7A9E7"/>
     <Color x:Key="LightVioletColor">#FFC7A9E7</Color>
 
+    <SolidColorBrush x:Key="RoseVioletBrush" Color="#FFAC47D6"/>
+    <Color x:Key="RoseVioletColor">#FFAC47D6</Color>
+
 
 </ResourceDictionary>

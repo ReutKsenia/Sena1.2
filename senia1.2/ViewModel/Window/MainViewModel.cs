@@ -1,9 +1,11 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Windows.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System;
 
 namespace senia1._2.ViewModel
 {
@@ -30,6 +32,11 @@ namespace senia1._2.ViewModel
 
         private double _frameOpacity;
         public double FrameOpacity { get { return _frameOpacity; } set { _frameOpacity= value; RaisePropertyChanged(() => FrameOpacity); } }
+
+        System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+        private DateTime date = DateTime.Now;
+        private string _day;
+        public string Day { get { return _day; } set { _day = value; RaisePropertyChanged(() => Day); } }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -41,6 +48,11 @@ namespace senia1._2.ViewModel
 
             FrameOpacity = 1;
             CurrentPage = Today;
+
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.IsEnabled = true;
+            timer.Tick += (o, e) => { Day = date.ToString("dd"); };
+            timer.Start();
         }
 
         public ICommand MenuToday_Click

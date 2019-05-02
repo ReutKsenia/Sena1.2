@@ -23,6 +23,7 @@ namespace senia1._2.View.Pages
         public TodayPage()
         {
             InitializeComponent();
+            DataContext = new ViewModel.TodayPageViewModel();
         }
     }
 }

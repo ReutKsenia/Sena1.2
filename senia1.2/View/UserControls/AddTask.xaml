@@ -8,6 +8,9 @@
              Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}"
              Height="{Binding ElementName=l,Path=Height}" 
              d:DesignWidth="800.459">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -29,6 +32,7 @@
         </StackPanel>
 
         <Button 
+            Visibility="{Binding OpacityButton, Converter={StaticResource BoolToVis}, FallbackValue=Visible}"
             x:Name="Add" 
             HorizontalAlignment="Left" 
             Height="38.667" 
@@ -37,24 +41,12 @@
             Width="167.4" 
             Background="{x:Null}" 
             BorderBrush="{x:Null}" 
-            Template="{DynamicResource ButtonControl}" 
-            >
-            <StackPanel
-                Orientation="Horizontal">
-                <ContentControl
-                    Content="{DynamicResource PlusIcon}"
-                    Background="{DynamicResource VioletBrush}"/>
-                <Label 
-                    Content="Добавить задачу"
-                    Foreground="{DynamicResource VioletBrush}"
-                    FontFamily="{DynamicResource BaseFont}" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center"/>
-            </StackPanel>
-        </Button>
+            Template="{DynamicResource ButtonAdd}"
+            Command="{Binding AddTask1_Click}"/>
+
 
         <Grid 
-            Visibility="Hidden">
+            Visibility="{Binding OpacityControl, Converter={StaticResource BoolToVis}, FallbackValue=Hidden}">
             <Border 
                 CornerRadius="12" 
                 Background="{DynamicResource VioletBrush}" 
@@ -90,7 +82,8 @@
                             Height="34.236" 
                             VerticalAlignment="Bottom" 
                             SelectionBrush="{x:Null}" 
-                            BorderBrush="{x:Null}"/>
+                            BorderBrush="{x:Null}"
+                            />
                     </Border>
                     <Button 
                         Content="Добавить задачу" 
@@ -105,6 +98,7 @@
                         BorderBrush="{x:Null}" 
                         Foreground="{DynamicResource VioletBrush}" 
                         FontFamily="{DynamicResource BaseFont}" 
+                        FontSize="{DynamicResource Smal}"
                         Margin="21,0,0,0" 
                         Cursor="Hand"/>
                     <Button 
@@ -118,7 +112,7 @@
                         Height="28.859" 
                         Background="{x:Null}" 
                         BorderBrush="{x:Null}" 
-                        />
+                        Command="{Binding Abort_Click}"/>
                 </Grid>
             </Border>
         </Grid>

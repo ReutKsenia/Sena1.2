@@ -6,24 +6,31 @@
       xmlns:local="clr-namespace:senia1._2.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-       Width="{Binding RelativeSource={RelativeSource AncestorType=Frame}, Path=Width}" 
-      Height="{Binding RelativeSource={RelativeSource AncestorType=Frame}, Path=Height}"
+      Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
+      Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}"
       Title="CalendarPage">
 
     <Grid>
-        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Foreground="{DynamicResource BaseWhiteBrush}"
-                   Width="280" 
-                   Height="371" Background="#FF8625A8" Margin="255,52,0,0">
-            <Calendar.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
-                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
-                    <GradientStop Color="#FF718597" Offset="0.375"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Calendar.BorderBrush>
-        </Calendar>
+        <DockPanel>
+            <StackPanel
+                DockPanel.Dock="Top">
+                <TextBlock
+                    Text="{Binding Time}"
+                    FontFamily="{DynamicResource BaseFont}"
+                    FontSize="{DynamicResource H3}" 
+                    Foreground="{DynamicResource VioletBrush}"
+                    />
+                <Viewbox
+                DockPanel.Dock="Left" Width="475" Margin="0,0,0,-0.4">
+                    <Calendar
+            Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
+            Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource CalendarStyle2}" BorderBrush="{x:Null}" Foreground="#FF7937BF" Background="{x:Null}"/>
+                </Viewbox>
+            </StackPanel>
+            <Grid></Grid>
+            
+        </DockPanel>
 
     </Grid>
 </Page>

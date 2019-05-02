@@ -47,5 +47,11 @@ namespace senia1._2.View.Windows
             SystemCommands.MinimizeWindow(this);
         }
 
+        private void MainWindow1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
     }
 }

@@ -117,8 +117,18 @@
     <Compile Include="Model\Users.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
+    <Compile Include="ViewModel\Pages\CalendarPageViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay1ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay2ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay3ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay4ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay5ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay6ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\TodayControlViewModel.cs" />
+    <Compile Include="ViewModel\Window\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Window\MainViewModel.cs" />
+    <Compile Include="ViewModel\Pages\TodayPageViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Pages\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
@@ -140,6 +150,27 @@
     </Compile>
     <Compile Include="View\UserControls\AddTaskDay.xaml.cs">
       <DependentUpon>AddTaskDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay1Control.xaml.cs">
+      <DependentUpon>NextDay1Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay2Control.xaml.cs">
+      <DependentUpon>NextDay2Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay3Control.xaml.cs">
+      <DependentUpon>NextDay3Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay4Control.xaml.cs">
+      <DependentUpon>NextDay4Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay5Control.xaml.cs">
+      <DependentUpon>NextDay5Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay6Control.xaml.cs">
+      <DependentUpon>NextDay6Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\TodayControl.xaml.cs">
+      <DependentUpon>TodayControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\RegistrationAndLogin.xaml.cs">
       <DependentUpon>RegistrationAndLogin.xaml</DependentUpon>
@@ -197,6 +228,34 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\AddTaskDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay1Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay2Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay3Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay4Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay5Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay6Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\TodayControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

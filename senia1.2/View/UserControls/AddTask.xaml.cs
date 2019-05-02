@@ -23,6 +23,7 @@ namespace senia1._2.View.UserControls
         public AddTask()
         {
             InitializeComponent();
+            DataContext = new ViewModel.AddTaskViewModel();
         }
     }
 }

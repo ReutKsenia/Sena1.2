@@ -15,7 +15,8 @@
         Background="{x:Null}" 
         Icon="/senia1.2;component/View/Images/icons8-s-96.ico" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None">
+        WindowStyle="None"
+        MouseDown="MainWindow1_MouseDown">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
         <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="OnMaximizeWindow"/>
@@ -156,7 +157,7 @@
                             </StackPanel>
                         </Border>
                         <Label
-                            Content="" 
+                            Content="{Binding Day}" 
                             HorizontalAlignment="Left" 
                             Height="37" 
                             VerticalAlignment="Top" 
@@ -165,7 +166,7 @@
                             VerticalContentAlignment="Center" 
                             HorizontalContentAlignment="Center" 
                             FontSize="{DynamicResource Big}" 
-                            Margin="14,250,0,0"/>
+                            Margin="14,248,0,0"/>
                     </Grid>
 
                     <Border 

@@ -13,17 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace senia1._2.View.Pages
+namespace senia1._2.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для CalendarPage.xaml
+    /// Логика взаимодействия для NextDay3Control.xaml
     /// </summary>
-    public partial class CalendarPage : Page
+    public partial class NextDay3Control : UserControl
     {
-        public CalendarPage()
+        public NextDay3Control()
         {
             InitializeComponent();
-            DataContext = new ViewModel.CalendarPageViewModel();
+            DataContext = new ViewModel.UserControls.NextDay3ViewModel();
         }
     }
 }
