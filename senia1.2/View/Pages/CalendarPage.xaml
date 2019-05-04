@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:senia1._2.View.Pages"
+      xmlns:MyCalendar="clr-namespace:senia1._2.ViewModel.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
@@ -11,26 +12,48 @@
       Title="CalendarPage">
 
     <Grid>
-        <DockPanel>
-            <StackPanel
-                DockPanel.Dock="Top">
-                <TextBlock
-                    Text="{Binding Time}"
-                    FontFamily="{DynamicResource BaseFont}"
-                    FontSize="{DynamicResource H3}" 
-                    Foreground="{DynamicResource VioletBrush}"
-                    />
-                <Viewbox
-                DockPanel.Dock="Left" Width="475" Margin="0,0,0,-0.4">
-                    <Calendar
-            Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
-            Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}"
-            HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource CalendarStyle2}" BorderBrush="{x:Null}" Foreground="#FF7937BF" Background="{x:Null}"/>
-                </Viewbox>
-            </StackPanel>
-            <Grid></Grid>
-            
-        </DockPanel>
-
+        <MyCalendar:Calendar x:Name="Calendar" DayChanged="Calendar_DayChanged" Margin="0,46,0,0" />
+        <Border
+             HorizontalAlignment="Right" 
+             Height="34" 
+             Margin="0,15,114,0" 
+             VerticalAlignment="Top" 
+             Width="115" 
+             CornerRadius="10" Background="{DynamicResource RoseVioletBrush}">
+            <ComboBox 
+                x:Name="cboMonth" 
+                SelectedItem="{Binding Selected}" 
+                ItemsSource="{Binding Months}" 
+                Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Width}" 
+                Height="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Height}"
+                VerticalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=VerticalAlignment}" 
+                FontSize="18" 
+                FontFamily="{DynamicResource BaseFont}" 
+                Foreground="{DynamicResource BaseWhiteBrush}" 
+                HorizontalContentAlignment="Center" 
+                BorderBrush="{x:Null}" 
+                HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=HorizontalAlignment}"
+                VerticalContentAlignment="Center" Padding="0,6,-15,6"/>
+        </Border>
+        <Border
+             HorizontalAlignment="Right" 
+             Height="34" 
+             Margin="0,15,15,0" 
+             VerticalAlignment="Top" 
+             Width="87"
+             CornerRadius="10" 
+             Background="{DynamicResource RoseVioletBrush}">
+            <ComboBox 
+                x:Name="cboYear" 
+                Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Width}" 
+                Height="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Height}"
+                VerticalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=VerticalAlignment}" 
+                HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=HorizontalAlignment}" 
+                FontSize="{DynamicResource Big}" 
+                FontFamily="{DynamicResource BaseFont}" 
+                BorderBrush="{x:Null}" 
+                Foreground="{DynamicResource BaseWhiteBrush}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="15,6,0,6" />
+        </Border>
+        
     </Grid>
 </Page>

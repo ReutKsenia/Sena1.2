@@ -117,8 +117,12 @@
     <Compile Include="Model\Users.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Converters\DateConverter.cs" />
+    <Compile Include="ViewModel\Converters\DayBorderColorConverter.cs" />
     <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
     <Compile Include="ViewModel\Pages\CalendarPageViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\Calendar.cs" />
+    <Compile Include="ViewModel\UserControls\Day.cs" />
     <Compile Include="ViewModel\UserControls\NextDay1ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay2ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay3ViewModel.cs" />
@@ -169,6 +173,9 @@
     <Compile Include="View\UserControls\NextDay6Control.xaml.cs">
       <DependentUpon>NextDay6Control.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\Task.xaml.cs">
+      <DependentUpon>Task.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\TodayControl.xaml.cs">
       <DependentUpon>TodayControl.xaml</DependentUpon>
     </Compile>
@@ -196,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Styles\Calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\NextDay6Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\Task.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

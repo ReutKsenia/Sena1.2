@@ -16,8 +16,12 @@
         WindowStartupLocation="CenterScreen" 
         FontFamily="{DynamicResource BaseFont}"
         FontSize="{DynamicResource Regular}"
-        Icon="/senia1.2;component/View/Images/icons8-s-96.ico" >
-
+        Icon="/senia1.2;component/View/Images/icons8-s-96.ico" MouseDown="RegistrationAndLogin1_MouseDown"
+        >
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -182,7 +186,7 @@
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
                 Foreground="{DynamicResource VioletBrush}" 
-                />
+                Text="{Binding User.UserName}"/>
             <TextBox 
                 materialDesign:HintAssist.Hint="Логин"
                 Margin="138.137,250.006,0,0"
@@ -192,7 +196,7 @@
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
                 Foreground="{DynamicResource VioletBrush}" 
-                />
+                Text="{Binding User.Login}"/>
             <PasswordBox 
                 materialDesign:HintAssist.Hint="Пароль"
                 Margin="138.137,292.506,0,0" 
@@ -258,7 +262,7 @@
                 Height="31" 
                 Margin="368,5,4.6,0" 
                 VerticalAlignment="Top"
-                Command="{Binding DeleteVideo}">
+                Command="{x:Static SystemCommands.CloseWindowCommand}">
                 <ContentControl
                     Content="{DynamicResource ExitIcon}"
                     Background="{DynamicResource VioletBrush}"/>
