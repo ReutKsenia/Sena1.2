@@ -74,7 +74,7 @@
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="RegistrationButton">
             <BeginStoryboard x:Name="OnLoaded1_BeginStoryboard1" Storyboard="{StaticResource OnClick1}"/>
@@ -85,11 +85,7 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Window.DataContext>
-        <viewmodel:LoginViewModel/>
-    </Window.DataContext>
-
-    <Grid Margin="-3.202,-3.217,-3.198,-3.205" Width="850" Height="600">
+    <Grid Margin="-3.202,-3.217,-3.198,-3.205" Width="850" Height="600" >
         <Grid
             x:Name="RegstrationGrid"
             Height="600"
@@ -178,6 +174,7 @@
             </Rectangle>
 
             <TextBox 
+                x:Name="userName"
                 materialDesign:HintAssist.Hint="Имя"
                 Width="251.937"
                 Margin="138.137,206.006,0,0"
@@ -186,8 +183,9 @@
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
                 Foreground="{DynamicResource VioletBrush}" 
-                Text="{Binding User.UserName}"/>
+                Text="{Binding UserName}"/>
             <TextBox 
+                x:Name="login"
                 materialDesign:HintAssist.Hint="Логин"
                 Margin="138.137,250.006,0,0"
                 Width="251.937"
@@ -196,8 +194,9 @@
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
                 Foreground="{DynamicResource VioletBrush}" 
-                Text="{Binding User.Login}"/>
+                Text="{Binding Login}"/>
             <PasswordBox 
+                x:Name="pass1NameTextBox"
                 materialDesign:HintAssist.Hint="Пароль"
                 Margin="138.137,292.506,0,0" 
                 Width="251.937"
@@ -205,9 +204,9 @@
                 VerticalAlignment="Top" 
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
-                Foreground="{DynamicResource VioletBrush}" 
-                />
+                Foreground="{DynamicResource VioletBrush}"/>
             <PasswordBox 
+                x:Name="pass2NameTextBox"
                 materialDesign:HintAssist.Hint="Повторите пароль"
                 Margin="138.137,339.006,0,0"
                 Width="251.937"
@@ -215,16 +214,20 @@
                 VerticalAlignment="Top" 
                 BorderBrush="{x:Null}"
                 SelectionBrush="{x:Null}" 
-                Foreground="{DynamicResource VioletBrush}" 
-                />
+                Foreground="{DynamicResource VioletBrush}"/>
 
             <Button
+                x:Name="registrationButton"
                 HorizontalAlignment="Left" 
                 Height="34" 
                 Margin="133.878,383.46,0,0"
                 VerticalAlignment="Top" 
                 Width="256.196"
-                Template="{DynamicResource ButtonRegistration2}"/>
+                Template="{DynamicResource ButtonRegistration2}" 
+                Click="RegistrationButton_Click"
+                />
+
+            
         </Grid>
 
         <Grid 
@@ -305,7 +308,7 @@
                 BorderBrush="{x:Null}" 
                 CaretBrush="{x:Null}" 
                 Foreground="{DynamicResource BaseWhiteBrush}" 
-                />
+                Text="{Binding Login1}"/>
             <PasswordBox
                 materialDesign:HintAssist.Hint="Введите пароль" 
                 Height="28" 
@@ -317,7 +320,7 @@
                 BorderBrush="{x:Null}" 
                 CaretBrush="{x:Null}" 
                 Foreground="{DynamicResource BaseWhiteBrush}" 
-                />
+                x:Name="pass"/>
 
             <Button
                 Template="{DynamicResource ButtonLogin}"
@@ -326,7 +329,8 @@
                 Margin="75.069,17.006,0,0" 
                 Grid.Row="3" 
                 VerticalAlignment="Top" 
-                Width="250"/>
+                Width="250" Click="Button_Click"
+                />
 
             <Button
                 x:Name="RegistrationButton"
@@ -336,7 +340,14 @@
                 Margin="75.069,0,0,0" 
                 Grid.Row="3" 
                 VerticalAlignment="Bottom" 
-                Width="250"/>
+                Width="250"
+                />
+            <Button 
+                x:Name="speech" 
+                Command="{Binding Speech}" 
+                Background="{x:Null}" 
+                Width="50" 
+                Height="50"/>
         </Grid>
     </Grid>
 </Window>

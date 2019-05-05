@@ -12,7 +12,7 @@
       Title="CalendarPage">
 
     <Grid>
-        <MyCalendar:Calendar x:Name="Calendar" DayChanged="Calendar_DayChanged" Margin="0,46,0,0" />
+        <MyCalendar:Calendar x:Name="Calendar" Margin="0,46,0,0" />
         <Border
              HorizontalAlignment="Right" 
              Height="34" 
@@ -54,6 +54,14 @@
                 BorderBrush="{x:Null}" 
                 Foreground="{DynamicResource BaseWhiteBrush}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="15,6,0,6" />
         </Border>
-        
+        <Label 
+            Foreground="{DynamicResource VioletBrush}" 
+            FontFamily="{DynamicResource BaseFont}" 
+            FontSize="{DynamicResource H3}" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            VerticalContentAlignment="Center" 
+            Margin="2,2,0,0"
+            Content="{Binding Time}"/>
     </Grid>
 </Page>

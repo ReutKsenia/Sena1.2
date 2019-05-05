@@ -58,10 +58,6 @@ namespace senia1._2.View.Pages
         }
 
 
-        private void Calendar_DayChanged(object sender, DayChangedEventArgs e)
-        {
 
-
-        }
     }
 }

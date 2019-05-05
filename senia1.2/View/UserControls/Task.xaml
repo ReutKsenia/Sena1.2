@@ -107,16 +107,39 @@
     </UserControl.Resources>
     <DockPanel>
     <Grid DockPanel.Dock="Left">
-        <CheckBox x:Name="checkBox" HorizontalAlignment="Left" Width="192" Style="{DynamicResource CheckBoxStyle1}" Background="{x:Null}" BorderBrush="#FF7141A4" Foreground="#FF7141A4" Height="26"/>
-        <TextBlock x:Name="textBlock" Width="199.467" Height="26" Margin="31.2,0,0,0" Foreground="#FF7141A4" Style="{DynamicResource TextBlockStyle1}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <CheckBox 
+            x:Name="checkBox" 
+            HorizontalAlignment="Left" 
+            Width="192" 
+            Style="{DynamicResource CheckBoxStyle1}" 
+            Background="{x:Null}" 
+            BorderBrush="{DynamicResource VioletBrush}" 
+            Foreground="{DynamicResource VioletBrush}" 
+            Height="26" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <TextBlock 
+            x:Name="textBlock" 
+            Height="26" 
+            Margin="31.2,0,0,0" 
+            Foreground="#FF7141A4" 
+            Style="{DynamicResource TextBlockStyle1}" 
+            FontSize="14" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            FontFamily="{DynamicResource BaseFont}"/>
     </Grid>
         <StackPanel Orientation="Horizontal" Width="50" DockPanel.Dock="Right" HorizontalAlignment="Right">
             <Button
                 Template="{DynamicResource ButtonControl}"
-                Content="{DynamicResource PanIcon}" Height="Auto" Margin="0,0,0,-0.4" Background="{DynamicResource VioletBrush}"/>
+                Content="{DynamicResource PanIcon}" 
+                Height="Auto" 
+                Margin="0,0,0,-0.4" 
+                Background="{DynamicResource VioletBrush}"/>
             <Button
                 Template="{DynamicResource ButtonControl}"
-                Content="{DynamicResource TrashIcon}" Height="Auto" Margin="0,0,0,-0.4" Background="{DynamicResource VioletBrush}"/>
+                Content="{DynamicResource TrashIcon}" 
+                Height="Auto" 
+                Margin="0,0,0,-0.4" 
+                Background="{DynamicResource VioletBrush}"/>
         </StackPanel>
     </DockPanel>
 </UserControl>

@@ -40,6 +40,17 @@ namespace senia1._2.ViewModel
             }
         }
 
+        public ICommand AddTask2_Click
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    View.UserControls.Task task = new View.UserControls.Task();
+                });
+            }
+        }
+
         public ICommand Abort_Click
         {
             get

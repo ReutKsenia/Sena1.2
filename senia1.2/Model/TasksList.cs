@@ -12,15 +12,13 @@ namespace senia1._2.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class TasksList
     {
-        public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string UserName { get; set; }
-        public byte[] Foto { get; set; }
-        public Nullable<int> ListId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> IdList { get; set; }
+        public Nullable<int> IdTask { get; set; }
     
-        public virtual Lists Lists { get; set; }
+        public virtual List List { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

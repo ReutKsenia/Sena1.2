@@ -13,10 +13,10 @@ namespace senia1._2.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ToDoListDBEntities1 : DbContext
+    public partial class ToDoEntities1 : DbContext
     {
-        public ToDoListDBEntities1()
-            : base("name=ToDoListDBEntities1")
+        public ToDoEntities1()
+            : base("name=ToDoEntities1")
         {
         }
     
@@ -25,8 +25,10 @@ namespace senia1._2.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Lists> Lists { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<List> List { get; set; }
+        public virtual DbSet<ListsUser> ListsUser { get; set; }
+        public virtual DbSet<Task> Task { get; set; }
+        public virtual DbSet<TasksList> TasksList { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

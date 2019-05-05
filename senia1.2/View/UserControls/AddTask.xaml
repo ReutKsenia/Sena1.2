@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="grid1">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="1*"/>
@@ -27,7 +27,8 @@
             <ListBox 
                 x:Name="l" 
                 BorderBrush="{x:Null}" 
-                Background="{x:Null}">
+                Background="{x:Null}"
+                ItemsSource="{Binding }">
             </ListBox>
         </StackPanel>
 
@@ -41,11 +42,11 @@
             Width="167.4" 
             Background="{x:Null}" 
             BorderBrush="{x:Null}" 
-            Template="{DynamicResource ButtonAdd}"
-            Command="{Binding AddTask1_Click}"/>
+            Template="{DynamicResource ButtonAdd}" Click="Add_Click"
+            />
 
 
-        <Grid 
+        <Grid x:Name="grid2"
             Visibility="{Binding OpacityControl, Converter={StaticResource BoolToVis}, FallbackValue=Hidden}">
             <Border 
                 CornerRadius="12" 
@@ -73,6 +74,7 @@
                         Height="29.236"  
                         Grid.Row="1">
                         <TextBox 
+                            x:Name="Task1"
                             Margin="13.179,0,0,0" 
                             TextWrapping="Wrap" 
                             Width="{Binding Width, ElementName=B2}" 
@@ -86,6 +88,7 @@
                             />
                     </Border>
                     <Button 
+                        x:Name="AddTask1"
                         Content="Добавить задачу" 
                         Grid.Column="0" 
                         HorizontalAlignment="Left" 
@@ -100,7 +103,7 @@
                         FontFamily="{DynamicResource BaseFont}" 
                         FontSize="{DynamicResource Smal}"
                         Margin="21,0,0,0" 
-                        Cursor="Hand"/>
+                        Cursor="Hand" Click="AddTask_Click"/>
                     <Button 
                         Content="Отмена" 
                         HorizontalAlignment="Left" 
@@ -112,7 +115,7 @@
                         Height="28.859" 
                         Background="{x:Null}" 
                         BorderBrush="{x:Null}" 
-                        Command="{Binding Abort_Click}"/>
+                        Command="{Binding Abort_Click}" Click="Button_Click"/>
                 </Grid>
             </Border>
         </Grid>

@@ -28,18 +28,28 @@ namespace senia1._2.ViewModel
         private Page Calendar;
 
         private Page _currentPage;
-        public Page CurrentPage { get { return _currentPage; } set { _currentPage = value; RaisePropertyChanged(() => CurrentPage); } }
+        public Page CurrentPage
+        {
+            get { return _currentPage; }
+            set { _currentPage = value; RaisePropertyChanged(() => CurrentPage); }
+        }
 
         private double _frameOpacity;
-        public double FrameOpacity { get { return _frameOpacity; } set { _frameOpacity= value; RaisePropertyChanged(() => FrameOpacity); } }
+        public double FrameOpacity
+        {
+            get { return _frameOpacity; }
+            set { _frameOpacity= value; RaisePropertyChanged(() => FrameOpacity); }
+        }
 
         System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
         private DateTime date = DateTime.Now;
         private string _day;
-        public string Day { get { return _day; } set { _day = value; RaisePropertyChanged(() => Day); } }
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        public string Day
+        {
+            get { return _day; }
+            set { _day = value; RaisePropertyChanged(() => Day); }
+        }
+
         public MainViewModel()
         {
             Today = new View.Pages.TodayPage();

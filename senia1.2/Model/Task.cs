@@ -12,23 +12,22 @@ namespace senia1._2.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Tasks
+    public partial class Task
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tasks()
+        public Task()
         {
-            this.Lists = new HashSet<Lists>();
+            this.TasksList = new HashSet<TasksList>();
         }
     
-        public int Id { get; set; }
-        public int ListId { get; set; }
+        public int id { get; set; }
         public string Category { get; set; }
-        public bool Completed { get; set; }
+        public Nullable<bool> Completed { get; set; }
         public string Priority { get; set; }
         public Nullable<System.DateTime> DateExpected { get; set; }
         public string Value { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lists> Lists { get; set; }
+        public virtual ICollection<TasksList> TasksList { get; set; }
     }
 }

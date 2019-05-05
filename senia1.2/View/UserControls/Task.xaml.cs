@@ -24,5 +24,15 @@ namespace senia1._2.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            textBlock.TextDecorations = TextDecorations.Strikethrough;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            textBlock.TextDecorations = null;
+        }
     }
 }

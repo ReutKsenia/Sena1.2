@@ -25,5 +25,35 @@ namespace senia1._2.View.UserControls
             InitializeComponent();
             DataContext = new ViewModel.AddTaskViewModel();
         }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (Task1.Text == "")
+            {
+                Add.Visibility = Visibility.Visible;
+                grid2.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Task task = new Task();
+                task.textBlock.Text = Task1.Text;
+                l.Items.Add(task);
+                Task1.Text = "";
+                Task1.Focus();
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Add.Visibility = Visibility.Hidden;
+            grid2.Visibility = Visibility.Visible;
+            Task1.Focus();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Add.Visibility = Visibility.Visible;
+            grid2.Visibility = Visibility.Hidden;
+        }
     }
 }

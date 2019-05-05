@@ -68,9 +68,11 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -93,30 +95,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Lists.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+    <Compile Include="Model\List.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelDB.Context.cs">
+    <Compile Include="Model\ListsUser.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Task.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TasksList.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ToDoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDB.Context.tt</DependentUpon>
+      <DependentUpon>ToDoModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelDB.cs">
+    <Compile Include="Model\ToDoModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelDB.Designer.cs">
+    <Compile Include="Model\ToDoModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Tasks.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Users.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repositories\EFUserRepository .cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="ViewModel\Converters\DateConverter.cs" />
     <Compile Include="ViewModel\Converters\DayBorderColorConverter.cs" />
     <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
@@ -130,6 +140,7 @@
     <Compile Include="ViewModel\UserControls\NextDay5ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay6ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\TodayControlViewModel.cs" />
+    <Compile Include="ViewModel\Window\CurrentUser.cs" />
     <Compile Include="ViewModel\Window\LoginViewModel.cs" />
     <Compile Include="ViewModel\Window\MainViewModel.cs" />
     <Compile Include="ViewModel\Pages\TodayPageViewModel.cs" />
@@ -309,12 +320,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\ModelDB.edmx">
+    <EntityDeploy Include="Model\ToDoModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ToDoModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\ModelDB.edmx.diagram">
-      <DependentUpon>ModelDB.edmx</DependentUpon>
+    <None Include="Model\ToDoModel.edmx.diagram">
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -370,15 +381,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ModelDB.Context.tt">
+    <Content Include="Model\ToDoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDB.edmx</DependentUpon>
-      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\ModelDB.tt">
+    <Content Include="Model\ToDoModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDB.edmx</DependentUpon>
-      <LastGenOutput>ModelDB.cs</LastGenOutput>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using senia1._2.ViewModel;
+using senia1._2.Model;
+using System.Speech.Synthesis;
+using System.Speech.Recognition;
+using System.Globalization;
 
 namespace senia1._2.View.Windows
 {
@@ -19,9 +24,11 @@ namespace senia1._2.View.Windows
     /// </summary>
     public partial class RegistrationAndLogin : Window
     {
+        LoginViewModel registrationViewModel = new LoginViewModel();
         public RegistrationAndLogin()
         {
             InitializeComponent();
+            DataContext = registrationViewModel;
         }
 
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
@@ -33,6 +40,19 @@ namespace senia1._2.View.Windows
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+        
+
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            registrationViewModel.registration(pass1NameTextBox.Password, pass2NameTextBox.Password);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (registrationViewModel.compareDataOfUser(pass.Password))
+                Close();
         }
     }
 }
