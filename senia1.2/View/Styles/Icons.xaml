@@ -18,6 +18,15 @@
         </Viewbox>
     </Grid>
 
+    <Grid x:Key="PlusIcon1">
+        <Viewbox Margin="5" Stretch="UniformToFill">
+            <Grid>
+                <Path Data="M21.652 16.416l-12.246 0c-0.49 0 -0.888 -0.396 -0.888 -0.887 0 -0.49 0.397 -0.888 0.888 -0.888l12.246 0c0.49 0 0.887 0.398 0.887 0.888 0 0.491 -0.396 0.887 -0.887 0.887z" Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Background}" />
+                <Path Data="M15.529 22.539c-0.49 0 -0.888 -0.397 -0.888 -0.887l0 -12.246c0 -0.49 0.398 -0.888 0.888 -0.888 0.49 0 0.887 0.398 0.887 0.888l0 12.246c0 0.491 -0.396 0.887 -0.887 0.887z" Fill="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Background}" />
+            </Grid>
+        </Viewbox>
+    </Grid>
+
     <Grid x:Key="TrashIcon">
         <Viewbox Margin="5" Stretch="Uniform">
             <Grid>

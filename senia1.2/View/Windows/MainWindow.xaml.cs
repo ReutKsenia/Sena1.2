@@ -1,4 +1,5 @@
-﻿using System;
+﻿using senia1._2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace senia1._2.View.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel main = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = main;
         }
 
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
@@ -53,5 +56,33 @@ namespace senia1._2.View.Windows
                 this.DragMove();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            grid2.Visibility = Visibility.Visible;
+            TitleList.Focus();
+            exp.IsExpanded = true;
+        }
+
+        private void AddList_Click(object sender, RoutedEventArgs e)
+        {
+            if(TitleList.Text == "")
+            {
+                grid2.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                main.addLists(TitleList.Text);
+            }
+        }
+
+        private void Abort_Click(object sender, RoutedEventArgs e)
+        {
+            grid2.Visibility = Visibility.Collapsed;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            main.SelectedList(lists.SelectedItem.ToString());
+        }
     }
 }

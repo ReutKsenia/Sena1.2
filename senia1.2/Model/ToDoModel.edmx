@@ -12,14 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DateCreate" Type="date" />
-        </EntityType>
-        <EntityType Name="ListsUser">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdList" Type="int" />
-          <Property Name="IdUser" Type="int" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -31,14 +24,7 @@
           <Property Name="Priority" Type="nvarchar" MaxLength="50" />
           <Property Name="DateExpected" Type="date" />
           <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TasksList">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdList" Type="int" />
-          <Property Name="IdTask" Type="int" />
+          <Property Name="ListId" Type="int" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -50,75 +36,41 @@
           <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Foto" Type="image" />
         </EntityType>
-        <Association Name="FK__ListsUser__IdLis__145C0A3F">
-          <End Role="List" Type="Self.List" Multiplicity="0..1" />
-          <End Role="ListsUser" Type="Self.ListsUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="List">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ListsUser">
-              <PropertyRef Name="IdList" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListsUser__IdUse__15502E78">
+        <Association Name="FK__List__UserId__1273C1CD">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="ListsUser" Type="Self.ListsUser" Multiplicity="*" />
+          <End Role="List" Type="Self.List" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ListsUser">
-              <PropertyRef Name="IdUser" />
+            <Dependent Role="List">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksList__IdLis__1A14E395">
+        <Association Name="FK__Task__ListId__15502E78">
           <End Role="List" Type="Self.List" Multiplicity="0..1" />
-          <End Role="TasksList" Type="Self.TasksList" Multiplicity="*" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="List">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TasksList">
-              <PropertyRef Name="IdList" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TasksList__IdTas__1B0907CE">
-          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
-          <End Role="TasksList" Type="Self.TasksList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Task">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TasksList">
-              <PropertyRef Name="IdTask" />
+            <Dependent Role="Task">
+              <PropertyRef Name="ListId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ToDoModelContainer">
           <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ListsUser" EntityType="Self.ListsUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TasksList" EntityType="Self.TasksList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ListsUser__IdLis__145C0A3F" Association="Self.FK__ListsUser__IdLis__145C0A3F">
-            <End Role="List" EntitySet="List" />
-            <End Role="ListsUser" EntitySet="ListsUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListsUser__IdUse__15502E78" Association="Self.FK__ListsUser__IdUse__15502E78">
+          <AssociationSet Name="FK__List__UserId__1273C1CD" Association="Self.FK__List__UserId__1273C1CD">
             <End Role="User" EntitySet="User" />
-            <End Role="ListsUser" EntitySet="ListsUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TasksList__IdLis__1A14E395" Association="Self.FK__TasksList__IdLis__1A14E395">
             <End Role="List" EntitySet="List" />
-            <End Role="TasksList" EntitySet="TasksList" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksList__IdTas__1B0907CE" Association="Self.FK__TasksList__IdTas__1B0907CE">
+          <AssociationSet Name="FK__Task__ListId__15502E78" Association="Self.FK__Task__ListId__15502E78">
+            <End Role="List" EntitySet="List" />
             <End Role="Task" EntitySet="Task" />
-            <End Role="TasksList" EntitySet="TasksList" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -133,18 +85,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateCreate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ListsUser" Relationship="Self.FK__ListsUser__IdLis__145C0A3F" FromRole="List" ToRole="ListsUser" />
-          <NavigationProperty Name="TasksList" Relationship="Self.FK__TasksList__IdLis__1A14E395" FromRole="List" ToRole="TasksList" />
-        </EntityType>
-        <EntityType Name="ListsUser">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdList" Type="Int32" />
-          <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="List" Relationship="Self.FK__ListsUser__IdLis__145C0A3F" FromRole="ListsUser" ToRole="List" />
-          <NavigationProperty Name="User" Relationship="Self.FK__ListsUser__IdUse__15502E78" FromRole="ListsUser" ToRole="User" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__List__UserId__1273C1CD" FromRole="List" ToRole="User" />
+          <NavigationProperty Name="Task" Relationship="Self.FK__Task__ListId__15502E78" FromRole="List" ToRole="Task" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -156,17 +99,8 @@
           <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateExpected" Type="DateTime" Precision="0" />
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TasksList" Relationship="Self.FK__TasksList__IdTas__1B0907CE" FromRole="Task" ToRole="TasksList" />
-        </EntityType>
-        <EntityType Name="TasksList">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdList" Type="Int32" />
-          <Property Name="IdTask" Type="Int32" />
-          <NavigationProperty Name="List" Relationship="Self.FK__TasksList__IdLis__1A14E395" FromRole="TasksList" ToRole="List" />
-          <NavigationProperty Name="Task" Relationship="Self.FK__TasksList__IdTas__1B0907CE" FromRole="TasksList" ToRole="Task" />
+          <Property Name="ListId" Type="Int32" />
+          <NavigationProperty Name="List" Relationship="Self.FK__Task__ListId__15502E78" FromRole="Task" ToRole="List" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -177,77 +111,43 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="ListsUser" Relationship="Self.FK__ListsUser__IdUse__15502E78" FromRole="User" ToRole="ListsUser" />
+          <NavigationProperty Name="List" Relationship="Self.FK__List__UserId__1273C1CD" FromRole="User" ToRole="List" />
         </EntityType>
-        <Association Name="FK__ListsUser__IdLis__145C0A3F">
-          <End Role="List" Type="Self.List" Multiplicity="0..1" />
-          <End Role="ListsUser" Type="Self.ListsUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="List">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ListsUser">
-              <PropertyRef Name="IdList" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TasksList__IdLis__1A14E395">
-          <End Role="List" Type="Self.List" Multiplicity="0..1" />
-          <End Role="TasksList" Type="Self.TasksList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="List">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TasksList">
-              <PropertyRef Name="IdList" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListsUser__IdUse__15502E78">
+        <Association Name="FK__List__UserId__1273C1CD">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="ListsUser" Type="Self.ListsUser" Multiplicity="*" />
+          <End Role="List" Type="Self.List" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ListsUser">
-              <PropertyRef Name="IdUser" />
+            <Dependent Role="List">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksList__IdTas__1B0907CE">
-          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
-          <End Role="TasksList" Type="Self.TasksList" Multiplicity="*" />
+        <Association Name="FK__Task__ListId__15502E78">
+          <End Role="List" Type="Self.List" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Task">
+            <Principal Role="List">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TasksList">
-              <PropertyRef Name="IdTask" />
+            <Dependent Role="Task">
+              <PropertyRef Name="ListId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ToDoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="List" EntityType="Self.List" />
-          <EntitySet Name="ListsUser" EntityType="Self.ListsUser" />
           <EntitySet Name="Task" EntityType="Self.Task" />
-          <EntitySet Name="TasksList" EntityType="Self.TasksList" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK__ListsUser__IdLis__145C0A3F" Association="Self.FK__ListsUser__IdLis__145C0A3F">
-            <End Role="List" EntitySet="List" />
-            <End Role="ListsUser" EntitySet="ListsUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TasksList__IdLis__1A14E395" Association="Self.FK__TasksList__IdLis__1A14E395">
-            <End Role="List" EntitySet="List" />
-            <End Role="TasksList" EntitySet="TasksList" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListsUser__IdUse__15502E78" Association="Self.FK__ListsUser__IdUse__15502E78">
+          <AssociationSet Name="FK__List__UserId__1273C1CD" Association="Self.FK__List__UserId__1273C1CD">
             <End Role="User" EntitySet="User" />
-            <End Role="ListsUser" EntitySet="ListsUser" />
+            <End Role="List" EntitySet="List" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksList__IdTas__1B0907CE" Association="Self.FK__TasksList__IdTas__1B0907CE">
+          <AssociationSet Name="FK__Task__ListId__15502E78" Association="Self.FK__Task__ListId__15502E78">
+            <End Role="List" EntitySet="List" />
             <End Role="Task" EntitySet="Task" />
-            <End Role="TasksList" EntitySet="TasksList" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -262,15 +162,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ListsUser">
-            <EntityTypeMapping TypeName="ToDoModel.ListsUser">
-              <MappingFragment StoreEntitySet="ListsUser">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="IdList" ColumnName="IdList" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -283,15 +175,7 @@
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="DateExpected" ColumnName="DateExpected" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TasksList">
-            <EntityTypeMapping TypeName="ToDoModel.TasksList">
-              <MappingFragment StoreEntitySet="TasksList">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="IdList" ColumnName="IdList" />
-                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

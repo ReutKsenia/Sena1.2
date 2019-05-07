@@ -98,13 +98,7 @@
     <Compile Include="Model\List.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ListsUser.cs">
-      <DependentUpon>ToDoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Task.cs">
-      <DependentUpon>ToDoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\TasksList.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ToDoModel.Context.cs">
@@ -125,10 +119,15 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\EFListRepository .cs" />
+    <Compile Include="Repositories\EFTaskRepository .cs" />
     <Compile Include="Repositories\EFUserRepository .cs" />
+    <Compile Include="Repositories\IListRepository.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="ViewModel\Converters\DateConverter.cs" />
     <Compile Include="ViewModel\Converters\DayBorderColorConverter.cs" />
+    <Compile Include="ViewModel\Pages\ListPageViewMdel.cs" />
     <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
     <Compile Include="ViewModel\Pages\CalendarPageViewModel.cs" />
     <Compile Include="ViewModel\UserControls\Calendar.cs" />
@@ -159,6 +158,9 @@
     </Compile>
     <Compile Include="View\Pages\TodayPage.xaml.cs">
       <DependentUpon>TodayPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\AddList.xaml.cs">
+      <DependentUpon>AddList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\AddTask.xaml.cs">
       <DependentUpon>AddTask.xaml</DependentUpon>
@@ -242,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Styles\Storyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\AddList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -24,11 +24,12 @@ namespace senia1._2.View.Windows
     /// </summary>
     public partial class RegistrationAndLogin : Window
     {
-        LoginViewModel registrationViewModel = new LoginViewModel();
+        LoginViewModel loginViewModel = new LoginViewModel();
         public RegistrationAndLogin()
         {
             InitializeComponent();
-            DataContext = registrationViewModel;
+            DataContext = loginViewModel;
+            
         }
 
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
@@ -45,13 +46,13 @@ namespace senia1._2.View.Windows
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            registrationViewModel.registration(pass1NameTextBox.Password, pass2NameTextBox.Password);
+            loginViewModel.registration(pass1NameTextBox.Password, pass2NameTextBox.Password);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (registrationViewModel.compareDataOfUser(pass.Password))
+            if (loginViewModel.compareDataOfUser(pass.Password))
                 Close();
         }
     }

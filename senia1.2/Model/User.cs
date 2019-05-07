@@ -20,7 +20,7 @@ namespace senia1._2.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.ListsUser = new HashSet<ListsUser>();
+            this.List = new HashSet<List>();
         }
     
         public int Id { get; set; }
@@ -30,8 +30,7 @@ namespace senia1._2.Model
         public byte[] Foto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListsUser> ListsUser { get; set; }
-
+        public virtual ICollection<List> List { get; set; }
 
         public User(string UserName, string Login, string Password)
         {

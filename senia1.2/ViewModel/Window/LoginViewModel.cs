@@ -25,6 +25,10 @@ namespace senia1._2.ViewModel
     public class LoginViewModel : ViewModelBase
     {
         EFUserRepository userRepository = new EFUserRepository();
+        EFListRepository listRepository = new EFListRepository();
+        
+        private DateTime date = DateTime.Now;
+
         private string patternPassword = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
         string userName;
         string login;
@@ -127,7 +131,17 @@ namespace senia1._2.ViewModel
                     if (tmp == null)
                     {
                         string Password = User.getHash(Password1);
-                        userRepository.add(new User(UserName, Login, Password));
+                        User user = new User(UserName, Login, Password);
+                        userRepository.add(user);
+                        listRepository.add(new List("Today", date, user.Id));
+                        listRepository.add(new List("NextDay1", date.AddDays(1), user.Id));
+                        listRepository.add(new List("NextDay2", date.AddDays(2), user.Id));
+                        listRepository.add(new List("NextDay3", date.AddDays(3), user.Id));
+                        listRepository.add(new List("NextDay4", date.AddDays(4), user.Id));
+                        listRepository.add(new List("NextDay5", date.AddDays(5), user.Id));
+                        listRepository.add(new List("NextDay6", date.AddDays(6), user.Id));
+                        listRepository.add(new List("Calendar", date, user.Id));
+                        listRepository.add(new List("Notepad", date, user.Id));
                         Speech1("Вы зарегистрированы, теперь вы можете войти в приложение");
                         return true;
                     }
@@ -174,7 +188,11 @@ namespace senia1._2.ViewModel
                         mainWindow.Show();
                         return true;
                     }
-                    return false;
+                    else
+                    {
+                        Speech1("Проверьте введённые данные");
+                        return false;
+                    }   
                 }
                 else
                 {
@@ -189,7 +207,9 @@ namespace senia1._2.ViewModel
             }
         }
 
+#pragma warning disable CS0108 // Член скрывает унаследованный член: отсутствует новое ключевое слово
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0108 // Член скрывает унаследованный член: отсутствует новое ключевое слово
 
         void OnPropertyChanged(string propertyName)
         {

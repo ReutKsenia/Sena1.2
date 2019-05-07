@@ -44,31 +44,5 @@ namespace senia1._2.ViewModel
             Selected = months.FirstOrDefault(w => w == DateTime.Today.ToString("MMMM"));
             Months = months;
         }
-
-        public ICommand SelectedItem
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    
-
-                });
-            }
-        }
-
-        private void RefreshCalendar()
-        {
-            if (Selected == null) return;
-            //if (SelectedD == null) return;
-
-            //int year = (int)cboYear.SelectedItem;
-
-            //int month = cboMonth.SelectedIndex + 1;
-
-            //DateTime targetDate = new DateTime(year, month, 1);
-
-            //Calendar.BuildCalendar(targetDate);
-        }
     }
 }

@@ -11,23 +11,73 @@ namespace senia1._2.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class List
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public List()
         {
-            this.ListsUser = new HashSet<ListsUser>();
-            this.TasksList = new HashSet<TasksList>();
+            this.Task = new HashSet<Task>();
         }
     
         public int id { get; set; }
         public string Title { get; set; }
         public Nullable<System.DateTime> DateCreate { get; set; }
+        public Nullable<int> UserId { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListsUser> ListsUser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TasksList> TasksList { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
+
+        public List(string Title, Nullable<System.DateTime> DateCreate, Nullable<int> UserId)
+        {
+            title = Title ?? throw new ArgumentNullException(nameof(Title));
+            dateCreate = DateCreate ?? throw new ArgumentNullException(nameof(DateCreate));
+            userId = UserId ?? throw new ArgumentNullException(nameof(UserId));
+        }
+
+        public string title
+        {
+            get { return Title; }
+            set
+            {
+                Title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        public Nullable<System.DateTime> dateCreate
+        {
+            get { return DateCreate; }
+            set
+            {
+                DateCreate = value;
+                OnPropertyChanged("DateCreate");
+            }
+        }
+
+        public Nullable<int> userId
+        {
+            get { return UserId; }
+            set
+            {
+                UserId = value;
+                OnPropertyChanged("UserId");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

@@ -26,9 +26,7 @@ namespace senia1._2.Model
         }
     
         public virtual DbSet<List> List { get; set; }
-        public virtual DbSet<ListsUser> ListsUser { get; set; }
         public virtual DbSet<Task> Task { get; set; }
-        public virtual DbSet<TasksList> TasksList { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

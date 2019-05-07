@@ -11,23 +11,94 @@ namespace senia1._2.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Task
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Task()
-        {
-            this.TasksList = new HashSet<TasksList>();
-        }
-    
         public int id { get; set; }
         public string Category { get; set; }
         public Nullable<bool> Completed { get; set; }
         public string Priority { get; set; }
         public Nullable<System.DateTime> DateExpected { get; set; }
         public string Value { get; set; }
+        public Nullable<int> ListId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TasksList> TasksList { get; set; }
+        public virtual List List { get; set; }
+
+        public Task()
+        {
+
+        }
+
+        public Task(string Value,string Category, Nullable<System.DateTime> DateExpected, Nullable<int> ListId)
+        {
+            value = Value ?? throw new ArgumentNullException(nameof(Value));
+            category = Category ?? throw new ArgumentNullException(nameof(Category));
+            dateEpected = DateExpected ?? throw new ArgumentNullException(nameof(DateExpected));
+            listId = ListId ?? throw new ArgumentNullException(nameof(ListId));
+        }
+
+        public string value
+        {
+            get { return Value; }
+            set
+            {
+                Value = value;
+                OnPropertyChanged("Value");
+            }
+        }
+
+        public string category
+        {
+            get { return Category; }
+            set
+            {
+                Category = value;
+                OnPropertyChanged("Category");
+            }
+        }
+
+        public Nullable<bool> completed
+        {
+            get { return Completed; }
+            set
+            {
+                Completed = value;
+                OnPropertyChanged("Completed");
+            }
+        }
+
+        public Nullable<System.DateTime> dateEpected
+        {
+            get { return DateExpected; }
+            set
+            {
+                DateExpected = value;
+                OnPropertyChanged("DateExpected");
+            }
+        }
+
+        public Nullable<int> listId
+        {
+            get { return ListId; }
+            set
+            {
+                ListId = value;
+                OnPropertyChanged("ListId");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override string ToString()
+        {
+            return Value;
+        }
     }
 }

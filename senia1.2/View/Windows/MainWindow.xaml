@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodel="clr-namespace:senia1._2.ViewModel"
+        xmlns:list ="clr-namespace:senia1._2.View.UserControls"
         xmlns:local="clr-namespace:senia1._2"
         mc:Ignorable="d"
         Title="MainWindow" 
@@ -17,14 +18,14 @@
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
         MouseDown="MainWindow1_MouseDown">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
         <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="OnMaximizeWindow"/>
         <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" Executed="OnMinimizeWindow"/>
     </Window.CommandBindings>
-    <Window.DataContext>
-        <viewmodel:MainViewModel/>
-    </Window.DataContext>
     <Grid>
         <DockPanel>
             <Border
@@ -47,18 +48,50 @@
                                 ScrollViewer.CanContentScroll="True" 
                                 RenderTransformOrigin="0.5,0.5" 
                                 Width="278">
-                                <Ellipse
+                                <Grid>
+                                    <Ellipse
+                                    Visibility="Hidden"
                                     HorizontalAlignment="Left" 
                                     Height="150" 
                                     Margin="65,30.587,0,0" 
                                     VerticalAlignment="Top" 
                                     Width="150">
-                                    <Ellipse.Fill>
-                                        <ImageBrush  ImageSource="/senia1.2;component/View/Images/doutzen-kroes-victoria-s-7073.jpg" Stretch="UniformToFill"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
+                                        <Ellipse.Fill>
+                                            <ImageBrush  ImageSource="/senia1.2;component/View/Images/doutzen-kroes-victoria-s-7073.jpg" Stretch="UniformToFill"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Button
+                                        Margin="1,30,0,0" 
+                                        Height="150" 
+                                        Width="150"
+                                        Template="{DynamicResource ButtonControl}"
+                                        Command="{Binding AddFoto_Click}">
+                                        <Grid>
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ContentControl
+                                                Content="{DynamicResource PlusIcon}" 
+                                                Background="{DynamicResource BaseWhiteBrush}" 
+                                                Width="50" 
+                                                Height="50"/>
+                                                <Label 
+                                                    Content="Добавить фото" 
+                                                    HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center" 
+                                                    Foreground="{DynamicResource BaseWhiteBrush}" 
+                                                    FontSize="{DynamicResource Big}"/>
+                                            </StackPanel>
+                                            <Ellipse
+                                                Height="150" 
+                                                Width="150">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush  ImageSource="{Binding Image}" Stretch="UniformToFill"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
                                 <Label 
-                                    Content="UserName" 
+                                    Content="{Binding UserName}" 
                                     HorizontalAlignment="Left" 
                                     Height="54.561" 
                                     VerticalAlignment="Top" 
@@ -133,8 +166,9 @@
                                             Margin="5,0,0,0"/>
                                     </StackPanel>
                                 </RadioButton>
-                                <Expander 
-                                    Height="166.63" 
+                                <Grid Height="230" Margin="0,0,0.4,0">
+                                    <Expander x:Name="exp" 
+                                    Height="230" 
                                     VerticalAlignment="Top" 
                                     Width="277"
                                     Background="{x:Null}" 
@@ -144,16 +178,116 @@
                                     FontSize="{DynamicResource H1}" 
                                     ScrollViewer.HorizontalScrollBarVisibility="Visible" 
                                     Cursor="Hand"
-                                    Header="Списки дел">
-                                    <ScrollViewer
-                                        Margin="0,0,-2.4,10" 
-                                        Height="84.87" 
-                                        Foreground="{DynamicResource BaseWhiteBrush}">
-                                        <StackPanel>
-                                            <ListBox></ListBox>
-                                        </StackPanel>
-                                    </ScrollViewer>
-                                </Expander>
+                                    Header="Списки дел" Margin="1,0,0,0">
+                                        <Grid Height="155">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <ScrollViewer Grid.Row="0" Grid.RowSpan="3" Height="145" VerticalAlignment="Top">
+                                                <StackPanel Grid.Row="0" Grid.RowSpan="3">
+                                                    <StackPanel>
+                                                        <ListBox
+                                                            x:Name="lists"
+                                                            FontSize="{DynamicResource Big}"
+                                                            Foreground="{DynamicResource BaseWhiteBrush}"
+                                                            BorderBrush="{x:Null}" 
+                                                            Background="{x:Null}"
+                                                            ItemsSource="{Binding Lists}" SelectionChanged="ListBox_SelectionChanged"/>
+                                                    </StackPanel>
+                                                    <Grid x:Name="grid2"
+                                                        Visibility="{Binding OpacityControl, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed}" Grid.RowSpan="2">
+                                                        <Border 
+                                                            CornerRadius="12" 
+                                                            Background="{DynamicResource BaseWhiteBrush}" 
+                                                            Margin="0,0,0.4,0" 
+                                                            Height="63" 
+                                                            VerticalAlignment="Bottom">
+                                                            <Grid 
+                                                                Grid.RowSpan="3" 
+                                                                Width="175" 
+                                                                VerticalAlignment="Top" 
+                                                                Margin="0,10,-0.6,0" 
+                                                                Height="60" HorizontalAlignment="Left">
+
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="0*"/>
+                                                                    <RowDefinition Height="13*"/>
+                                                                    <RowDefinition Height="17*"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Border 
+                                                                    Background="#FFFFFFFF" 
+                                                                    CornerRadius="8" 
+                                                                    Margin="10,0,10,0.4" 
+                                                                    VerticalAlignment="Bottom" 
+                                                                    Height="26" BorderBrush="{DynamicResource VioletBrush}" BorderThickness="2" Grid.Row="1">
+                                                                    <TextBox 
+                                                                        x:Name="TitleList"
+                                                                        Margin="5.4,-1.6,0,-2.8" 
+                                                                        TextWrapping="Wrap" 
+                                                                        Width="142" 
+                                                                        Foreground="{DynamicResource VioletBrush}" 
+                                                                        FontFamily="{DynamicResource BaseFont}" 
+                                                                        FontSize="{DynamicResource Smal}" 
+                                                                        Height="26" 
+                                                                        VerticalAlignment="Bottom" 
+                                                                        SelectionBrush="{x:Null}" 
+                                                                        BorderBrush="{x:Null}" HorizontalAlignment="Left"
+                                                                        />
+                                                                </Border>
+                                                                <Button 
+                                                                    x:Name="AddList"
+                                                                    Content="Добавить" 
+                                                                    Grid.Column="0" 
+                                                                    HorizontalAlignment="Left" 
+                                                                    Height="25" 
+                                                                    Grid.Row="2" 
+                                                                    VerticalAlignment="Top" 
+                                                                    Width="82" 
+                                                                    Style="{DynamicResource ButtonStyle1}" 
+                                                                    Background="{DynamicResource VioletBrush}" 
+                                                                    BorderBrush="{x:Null}" 
+                                                                    Foreground="{DynamicResource BaseWhiteBrush}" 
+                                                                    FontFamily="{DynamicResource BaseFont}" 
+                                                                    FontSize="{DynamicResource Smal}"
+                                                                    Margin="10,0.6,0,0" 
+                                                                    Cursor="Hand" Click="AddList_Click"/>
+                                                                <Button 
+                                                                    x:Name="Abort"
+                                                                    Content="Отмена" 
+                                                                    HorizontalAlignment="Left" 
+                                                                    VerticalAlignment="Top" 
+                                                                    Width="80" 
+                                                                    Margin="92,0.6,0,0" 
+                                                                    Grid.Row="2" 
+                                                                    Foreground="{DynamicResource VioletBrush}" 
+                                                                    FontFamily="{DynamicResource BaseFont}"
+                                                                    Height="25" 
+                                                                    Background="{x:Null}" 
+                                                                    BorderBrush="{x:Null}" 
+                                                                    Command="{Binding Abort_Click}" Click="Abort_Click"/>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </Expander>
+                                    <Button
+                                        Template="{DynamicResource ButtonControl}" 
+                                        Height="Auto" 
+                                        Margin="215,0,10,182" 
+                                        Click="Button_Click">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="Black" Opacity="0"/>
+                                        </Button.Background>
+                                        <ContentControl
+                                            Content="{DynamicResource PlusIcon1}" 
+                                            Background="{DynamicResource BaseWhiteBrush}" Width="50" Height="50" 
+                                            />
+                                    </Button>
+                                </Grid>
                             </StackPanel>
                         </Border>
                         <Label

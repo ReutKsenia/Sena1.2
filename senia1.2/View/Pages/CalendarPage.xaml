@@ -12,7 +12,7 @@
       Title="CalendarPage">
 
     <Grid>
-        <MyCalendar:Calendar x:Name="Calendar" Margin="0,46,0,0" />
+        <MyCalendar:Calendar x:Name="Calendar" Margin="0,46,0,0" DayChanged="Calendar_DayChanged"/>
         <Border
              HorizontalAlignment="Right" 
              Height="34" 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using senia1._2.ViewModel;
+using senia1._2.ViewModel.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace senia1._2.View.Pages
         public ListPage()
         {
             InitializeComponent();
+            DataContext = new ListPageViewMdel();
         }
     }
 }

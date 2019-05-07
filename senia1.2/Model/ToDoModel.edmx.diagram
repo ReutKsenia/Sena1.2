@@ -4,16 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="672f910196bf439194cf86fbf2664878" Name="Diagram1">
-        <EntityTypeShape EntityType="ToDoModel.List" Width="1.5" PointX="3.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToDoModel.ListsUser" Width="1.5" PointX="2.125" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToDoModel.Task" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToDoModel.TasksList" Width="1.5" PointX="6.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToDoModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="ToDoModel.FK__ListsUser__IdLis__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="ToDoModel.FK__TasksList__IdLis__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="ToDoModel.FK__ListsUser__IdUse__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="ToDoModel.FK__TasksList__IdTas__1B0907CE" ManuallyRouted="false" />
+      <Diagram DiagramId="2185c23951564c06a4c673a5a1582597" Name="Diagram1">
+        <EntityTypeShape EntityType="ToDoModel.List" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoModel.Task" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ToDoModel.FK__List__UserId__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoModel.FK__Task__ListId__15502E78" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
