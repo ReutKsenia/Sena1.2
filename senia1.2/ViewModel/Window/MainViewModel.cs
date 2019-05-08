@@ -27,8 +27,9 @@ namespace senia1._2.ViewModel
         private Page Today;
         private Page NextSevenDays;
         private Page Calendar;
-        //private Page Notepad;
+        private Page Notepad;
         private Page List;
+        private Page Welcome;
 
         private EFUserRepository userRepository = new EFUserRepository();
         private EFListRepository listRepository = new EFListRepository();
@@ -86,15 +87,13 @@ namespace senia1._2.ViewModel
             NextSevenDays = new View.Pages.NextSevenDaysPage();
             Calendar = new View.Pages.CalendarPage();
             List = new View.Pages.ListPage();
+            Notepad = new View.Pages.NotepadPage();
+            Welcome = new View.Pages.WelcomePage();
 
             FrameOpacity = 1;
-            CurrentPage = Today;
+            CurrentPage = Welcome;
 
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.IsEnabled = true;
-            timer.Tick += (o, e) => { Day = date.ToString("dd"); };
-            timer.Start();
-
+            Day = date.ToString("dd");
             UserName = CurrentUser.User.UserName;
             if(ConvertByteArrayToImage(CurrentUser.User.Foto) != null)
             {
@@ -124,6 +123,14 @@ namespace senia1._2.ViewModel
             get
             {
                 return new RelayCommand(() => ShowOpacity(Calendar));
+            }
+        }
+
+        public ICommand MenuNotepad_Click
+        {
+            get
+            {
+                return new RelayCommand(() => ShowOpacity(Notepad));
             }
         }
 

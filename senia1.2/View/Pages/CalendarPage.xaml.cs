@@ -48,15 +48,13 @@ namespace senia1._2.View.Pages
 
         private void getNotesFromDb()
         {
-            ToDoEntities1 ctx = new ToDoEntities1();
+            EFTaskRepository taskRepository = new EFTaskRepository();
 
-            var results = (from d in ctx.Task select d);
-
-            List<Model.Task> days = results.ToList();
+            List<Model.Task> days = taskRepository.getByCategory("Calendar").ToList();
 
             foreach (Model.Task dbDay in days)
             {
-                foreach (Day calendarDay in Calendar.Days)
+                foreach (senia1._2.ViewModel.UserControls.Day calendarDay in Calendar.Days)
                 {
                     if (calendarDay.Date == dbDay.DateExpected)
                     {
@@ -107,10 +105,10 @@ namespace senia1._2.View.Pages
                     oldTask.Value = e.Day.Notes;
                     ctx.SaveChanges();
                     var results2 = (from d in ctx.Task where d.Value == "" select d);
-                if(results2.Count() > 0)
-                {
-                    taskRepository.delete(oldTask);
-                }
+                    if(results2.Count() > 0)
+                    {
+                        taskRepository.delete(oldTask);
+                    }
                 }
            
         }

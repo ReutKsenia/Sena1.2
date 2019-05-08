@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using senia1._2.Repositories;
 
 namespace senia1._2.View.UserControls
 {
@@ -24,6 +25,50 @@ namespace senia1._2.View.UserControls
         {
             InitializeComponent();
             DataContext = new ViewModel.UserControls.TodayControlViewModel();
+
+            getTasks();
+        }
+
+        private void AddTask_AddMouseClick(object sender, RoutedEventArgs e)
+        {
+            if (Today.Task1.Text == "")
+            {
+                Today.Add.Visibility = Visibility.Visible;
+                Today.grid2.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                EFTaskRepository taskRepository = new EFTaskRepository();
+                EFListRepository listRepository = new EFListRepository();
+                DateTime date = DateTime.Now;
+
+                Task task = new Task();
+                task.textBlock.Text = Today.Task1.Text;
+                Today.l.Items.Add(task);
+                taskRepository.add(new Model.Task(Today.Task1.Text, "Today", date, listRepository.getByName("Today").id, false, "не важно и не срочно"));
+                Today.Task1.Text = "";
+                Today.Task1.Focus();
+
+                
+            }
+            
+        }
+
+        private void getTasks()
+        {
+            EFTaskRepository taskRepository = new EFTaskRepository();
+            EFListRepository listRepository = new EFListRepository();
+
+            var result = taskRepository.getByCategory("Today").ToList();
+            if(result.Count() > 0)
+            {
+                for(int i=0; i < result.Count(); i++)
+                {
+                    Task task = new Task();
+                    task.textBlock.Text = result[i].Value;
+                    Today.l.Items.Add(task);
+                }
+            }
         }
     }
 }

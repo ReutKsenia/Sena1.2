@@ -63,6 +63,18 @@
         </Viewbox>
     </Grid>
 
+    <Grid x:Key="Welcome">
+        <Viewbox Margin="5" Stretch="Uniform">
+            <Image Source="/senia1.2;component/View/Images/Welcome.png"/>
+        </Viewbox>
+    </Grid>
+
+    <Grid x:Key="Welcome2">
+        <Viewbox Margin="5" Stretch="Uniform">
+            <Image Source="/senia1.2;component/View/Images/Welcome2.png"/>
+        </Viewbox>
+    </Grid>
+
     <Grid x:Key="Senia">
         <Viewbox Margin="5" Stretch="Fill">
             <Image Source="/senia1.2;component/View/Images/s.png"/>

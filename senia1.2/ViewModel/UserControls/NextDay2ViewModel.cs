@@ -10,7 +10,6 @@ namespace senia1._2.ViewModel.UserControls
 {
     public class NextDay2ViewModel : ViewModelBase
     {
-        private System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
         private DateTime date = DateTime.Now;
 
         private string _day;
@@ -21,14 +20,10 @@ namespace senia1._2.ViewModel.UserControls
 
         public NextDay2ViewModel()
         {
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.IsEnabled = true;
-            timer.Tick += (o, e) => { var d = new StringBuilder(date.AddDays(2).ToString("dddd", CultureInfo.GetCultureInfo("ru-ru")));
-                d[0] = char.ToUpper(d[0]);
-                DayWeek = d.ToString();
-            };
-            timer.Tick += (o, e) => { Day = date.AddDays(2).ToString("d MMMM", CultureInfo.GetCultureInfo("ru-ru")); };
-            timer.Start();
+            var d = new StringBuilder(date.AddDays(2).ToString("dddd", CultureInfo.GetCultureInfo("ru-ru")));
+            d[0] = char.ToUpper(d[0]);
+            DayWeek = d.ToString();
+            Day = date.AddDays(2).ToString("d MMMM", CultureInfo.GetCultureInfo("ru-ru")); 
         }
     }
 }

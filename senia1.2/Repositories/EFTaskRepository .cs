@@ -37,6 +37,11 @@ namespace senia1._2.Repositories
             return context.Task.Where(x => x.ListId == id).ToList();
         }
 
+        public IEnumerable<Task> getByCategory(string category)
+        {
+            return context.Task.Where(x => x.Category == category).ToList();
+        }
+
         public void update(Task oldTask, Task newTask)
         {
             var tmp = context.Task.FirstOrDefault(x => x.id == oldTask.id);

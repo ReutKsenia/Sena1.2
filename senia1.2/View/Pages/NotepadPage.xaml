@@ -6,9 +6,67 @@
       xmlns:local="clr-namespace:senia1._2.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
+      Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}"
       Title="NotepadPage">
 
     <Grid>
-        
+        <Border
+             HorizontalAlignment="Right" 
+             Height="34" 
+             VerticalAlignment="Top" 
+             Width="199" 
+             CornerRadius="10" Background="{DynamicResource RoseVioletBrush}" Margin="0,0,133,0" Padding="0">
+            <ComboBox 
+                x:Name="Font"
+                SelectedItem="{DynamicResource BaseFont}"
+                Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Width}" 
+                Height="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Height}"
+                VerticalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=VerticalAlignment}" 
+                FontSize="18" 
+                FontFamily="{DynamicResource BaseFont}" 
+                Foreground="{DynamicResource BaseWhiteBrush}" 
+                HorizontalContentAlignment="Center" 
+                BorderBrush="{x:Null}" 
+                HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=HorizontalAlignment}"
+                VerticalContentAlignment="Center" Padding="0,6,-15,6"
+                ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"
+                />
+        </Border>
+        <Border
+             HorizontalAlignment="Right" 
+             Height="34" 
+             VerticalAlignment="Top" 
+             Width="80" 
+             CornerRadius="10" Background="{DynamicResource RoseVioletBrush}" Margin="0,0,31,0">
+            <ComboBox 
+                x:Name="FontSize" 
+                SelectedItem="{DynamicResource Smal}"
+                Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Width}" 
+                Height="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Height}"
+                VerticalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=VerticalAlignment}" 
+                FontSize="18" 
+                FontFamily="{DynamicResource BaseFont}" 
+                Foreground="{DynamicResource BaseWhiteBrush}" 
+                HorizontalContentAlignment="Center" 
+                BorderBrush="{x:Null}" 
+                HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=HorizontalAlignment}"
+                VerticalContentAlignment="Center" Padding="0,6,-15,6" SelectionChanged="FontSize_SelectionChanged"
+                >
+            </ComboBox>
+        </Border>
+        <Border CornerRadius="18" BorderBrush="{DynamicResource VioletBrush}" BorderThickness="0,1,0,0" Margin="0,50,0,0">
+            <RichTextBox
+            x:Name="Notepad"
+            Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
+            Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}" 
+            BorderBrush="{x:Null}" 
+            SelectionBrush="{DynamicResource LightVioletBrush}" 
+            Foreground="{DynamicResource VioletBrush}"
+            FontSize="{Binding SelectedValue, ElementName=FontSize}" 
+            Background="{x:Null}" Style="{DynamicResource RichTextBoxStyle1}" Margin="8,10,0,0"
+            FontFamily="{Binding SelectedValue, ElementName=Font}" SelectionChanged="Notepad_SelectionChanged"
+            />
+        </Border>
     </Grid>
 </Page>

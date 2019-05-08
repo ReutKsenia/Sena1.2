@@ -103,7 +103,8 @@
                         FontFamily="{DynamicResource BaseFont}" 
                         FontSize="{DynamicResource Smal}"
                         Margin="21,0,0,0" 
-                        Cursor="Hand" Click="AddTask_Click"/>
+                        Cursor="Hand" 
+                        Click="AddTask_Click"/>
                     <Button 
                         Content="Отмена" 
                         HorizontalAlignment="Left" 

@@ -17,10 +17,7 @@ namespace senia1._2.ViewModel.UserControls
 
         public NextDay1ViewModel()
         {
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.IsEnabled = true;
-            timer.Tick += (o, e) => { Day = date.AddDays(1).ToString("ddd,d MMMM", CultureInfo.GetCultureInfo("ru-ru")); };
-            timer.Start();
+            Day = date.AddDays(1).ToString("ddd,d MMMM", CultureInfo.GetCultureInfo("ru-ru")); 
         }
     }
 }

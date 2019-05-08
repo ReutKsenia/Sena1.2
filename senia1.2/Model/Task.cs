@@ -38,6 +38,16 @@ namespace senia1._2.Model
             listId = ListId ?? throw new ArgumentNullException(nameof(ListId));
         }
 
+        public Task(string Value, string Category, Nullable<System.DateTime> DateExpected, Nullable<int> ListId, Nullable<bool> Completed, string Priority)
+        {
+            value = Value ?? throw new ArgumentNullException(nameof(Value));
+            category = Category ?? throw new ArgumentNullException(nameof(Category));
+            dateEpected = DateExpected ?? throw new ArgumentNullException(nameof(DateExpected));
+            listId = ListId ?? throw new ArgumentNullException(nameof(ListId));
+            completed = Completed ?? throw new ArgumentNullException(nameof(Completed));
+            priority = Priority ?? throw new ArgumentNullException(nameof(Priority));
+        }
+
         public string value
         {
             get { return Value; }
@@ -45,6 +55,16 @@ namespace senia1._2.Model
             {
                 Value = value;
                 OnPropertyChanged("Value");
+            }
+        }
+
+        public string priority
+        {
+            get { return Priority; }
+            set
+            {
+                Priority = value;
+                OnPropertyChanged("Priority");
             }
         }
 

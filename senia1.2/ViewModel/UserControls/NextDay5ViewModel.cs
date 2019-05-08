@@ -29,15 +29,10 @@ namespace senia1._2.ViewModel.UserControls
 
         public NextDay5ViewModel()
         {
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.IsEnabled = true;
-            timer.Tick += (o, e) => {
-                var d = new StringBuilder(date.AddDays(5).ToString("dddd", CultureInfo.GetCultureInfo("ru-ru")));
-                d[0] = char.ToUpper(d[0]);
-                DayWeek = d.ToString();
-            };
-            timer.Tick += (o, e) => { Day = date.AddDays(5).ToString("d MMMM", CultureInfo.GetCultureInfo("ru-ru")); };
-            timer.Start();
+            var d = new StringBuilder(date.AddDays(5).ToString("dddd", CultureInfo.GetCultureInfo("ru-ru")));
+            d[0] = char.ToUpper(d[0]);
+            DayWeek = d.ToString();
+            Day = date.AddDays(5).ToString("d MMMM", CultureInfo.GetCultureInfo("ru-ru"));
         }
     }
 }

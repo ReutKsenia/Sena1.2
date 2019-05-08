@@ -28,19 +28,8 @@ namespace senia1._2.View.UserControls
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
         {
-            if (Task1.Text == "")
-            {
-                Add.Visibility = Visibility.Visible;
-                grid2.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Task task = new Task();
-                task.textBlock.Text = Task1.Text;
-                l.Items.Add(task);
-                Task1.Text = "";
-                Task1.Focus();
-            }
+            if (AddMouseClick != null)
+                AddMouseClick(sender, e);
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -55,5 +44,12 @@ namespace senia1._2.View.UserControls
             Add.Visibility = Visibility.Visible;
             grid2.Visibility = Visibility.Hidden;
         }
+
+        public event RoutedEventHandler AddMouseClick;
+        //private void AddTask1_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (AddMouseClick != null)
+        //        AddMouseClick(sender, e);
+        //}
     }
 }

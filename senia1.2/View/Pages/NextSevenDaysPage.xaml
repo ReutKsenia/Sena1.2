@@ -12,7 +12,7 @@
       Title="NextSevenDaysPage">
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer Margin="0,3,4,3">
             <StackPanel Orientation="Vertical">
                 <usercontrol:TodayControl/>
                 <usercontrol:NextDay1Control/>

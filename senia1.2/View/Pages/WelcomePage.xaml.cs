@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace senia1._2.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для TodayPage.xaml
+    /// Логика взаимодействия для WelcomePage.xaml
     /// </summary>
-    public partial class TodayPage : Page
+    public partial class WelcomePage : Page
     {
-        public TodayPage()
+        public WelcomePage()
         {
             InitializeComponent();
-            DataContext = new ViewModel.TodayPageViewModel();
-        }
-
-        private void TodayControl_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

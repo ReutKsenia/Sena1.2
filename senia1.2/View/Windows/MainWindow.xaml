@@ -152,7 +152,8 @@
                                 </RadioButton>
                                 <RadioButton
                                     Template="{DynamicResource RadioButtonMenu}"
-                                    Height="61">
+                                    Height="61"
+                                    Command="{Binding MenuNotepad_Click}">
                                     <StackPanel Orientation="Horizontal">
                                         <Image 
                                             Source="/senia1.2;component/View/Images/icons8-журнал-80.png"

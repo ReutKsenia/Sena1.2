@@ -19,13 +19,6 @@ create table List
 	UserId int foreign key references "User"(id)
 );
 
---create table ListsUser
---(
---	id int primary key identity(1,1),
---	IdList int foreign key references List(id),
---	IdUser int foreign key references "User"(id)
---);
-
 create table Task
 (
 	id int primary key identity(1,1),
@@ -36,10 +29,3 @@ create table Task
 	Value nvarchar(max) not null,
 	ListId int foreign key references List(id)
 );
-
---create table TasksList
---(
---	id int primary key identity(1,1),
---	IdList int foreign key references List(id),
---	IdTask int foreign key references Task(id)
---);
