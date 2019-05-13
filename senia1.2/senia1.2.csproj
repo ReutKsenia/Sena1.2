@@ -138,6 +138,7 @@
     <Compile Include="ViewModel\UserControls\NextDay4ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay5ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay6ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserControls\TodayControlViewModel.cs" />
     <Compile Include="ViewModel\Window\CurrentUser.cs" />
     <Compile Include="ViewModel\Window\LoginViewModel.cs" />
@@ -170,6 +171,9 @@
     </Compile>
     <Compile Include="View\UserControls\AddTaskDay.xaml.cs">
       <DependentUpon>AddTaskDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ModifyTask.xaml.cs">
+      <DependentUpon>ModifyTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\NextDay1Control.xaml.cs">
       <DependentUpon>NextDay1Control.xaml</DependentUpon>
@@ -263,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\AddTaskDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ModifyTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

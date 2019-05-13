@@ -57,5 +57,16 @@ namespace senia1._2.Repositories
             }
             context.SaveChanges();
         }
+
+        public Task getById(int id)
+        {
+            return context.Task.FirstOrDefault(x => x.id == id);
+
+        }
+
+        public IEnumerable<Task> getByValueAndCategory(string value, string category)
+        {
+            return context.Task.Where(x => x.Category == category && x.Value == value).ToList();
+        }
     }
 }

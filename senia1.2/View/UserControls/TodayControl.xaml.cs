@@ -28,7 +28,7 @@ namespace senia1._2.View.UserControls
 
             getTasks();
         }
-
+        
         private void AddTask_AddMouseClick(object sender, RoutedEventArgs e)
         {
             if (Today.Task1.Text == "")
@@ -43,13 +43,45 @@ namespace senia1._2.View.UserControls
                 DateTime date = DateTime.Now;
 
                 Task task = new Task();
+                //task.Modify.Click += new RoutedEventHandler(ModifyClick);
+                //task.Delete.Click += new RoutedEventHandler(DeleteClick);
                 task.textBlock.Text = Today.Task1.Text;
                 Today.l.Items.Add(task);
-                taskRepository.add(new Model.Task(Today.Task1.Text, "Today", date, listRepository.getByName("Today").id, false, "не важно и не срочно"));
+                Model.Task task1 = new Model.Task(Today.Task1.Text, "Today", date, listRepository.getByName("Today").id, false, "не важно и не срочно");
+                taskRepository.add(task1);
+                task.Id = task1.id;
+                task.modify.Abort.Click += (o, w) =>
+                {
+                    task.tas.Visibility = Visibility.Visible;
+                    task.modify.Visibility = Visibility.Collapsed;
+                };
+                task.modify.Save.Click += (o, q) =>
+                {
+                    if(task.modify.Task1.Text != "")
+                    {
+                        task.textBlock.Text = task.modify.Task1.Text;
+                        task.tas.Visibility = Visibility.Visible;
+                        task.modify.Visibility = Visibility.Collapsed;
+
+                        taskRepository.update(task1, new Model.Task(task.textBlock.Text, task1.Category, task1.DateExpected, task1.ListId, task1.Completed, task1.Priority));
+                    }
+                    else
+                    {
+                        task.tas.Visibility = Visibility.Visible;
+                        task.modify.Visibility = Visibility.Collapsed;
+                    }
+                    
+                };
+                task.Delete.Click += (o, i) =>
+                {
+                    var result = taskRepository.getById(task.Id);
+                    taskRepository.delete(result);
+                    Today.l.Items.Remove(task);
+                };
+
                 Today.Task1.Text = "";
                 Today.Task1.Focus();
 
-                
             }
             
         }
@@ -65,8 +97,48 @@ namespace senia1._2.View.UserControls
                 for(int i=0; i < result.Count(); i++)
                 {
                     Task task = new Task();
+
                     task.textBlock.Text = result[i].Value;
+                    task.Id = result[i].id;
+                    if (result[i].Completed == true)
+                    {
+                        task.checkBox.IsChecked = true;
+                    }
+                    else
+                    {
+                        task.checkBox.IsChecked = false;
+                    }
                     Today.l.Items.Add(task);
+
+
+                    var result1 = taskRepository.getById(task.Id);
+                    task.modify.Abort.Click += (o, w) =>
+                    {
+                        task.tas.Visibility = Visibility.Visible;
+                        task.modify.Visibility = Visibility.Collapsed;
+                    };
+                    task.modify.Save.Click += (o, q) =>
+                    {
+                        if (task.modify.Task1.Text != "")
+                        {
+                            task.textBlock.Text = task.modify.Task1.Text;
+                            task.tas.Visibility = Visibility.Visible;
+                            task.modify.Visibility = Visibility.Collapsed;
+
+                            taskRepository.update(result1, new Model.Task(task.textBlock.Text, result1.Category, result1.DateExpected, result1.ListId, result1.Completed, result1.Priority));
+                        }
+                        else
+                        {
+                            task.tas.Visibility = Visibility.Visible;
+                            task.modify.Visibility = Visibility.Collapsed;
+                        }
+
+                    };
+                    task.Delete.Click += (o, a) =>
+                    {
+                        taskRepository.delete(result1);
+                        Today.l.Items.Remove(task);
+                    };
                 }
             }
         }

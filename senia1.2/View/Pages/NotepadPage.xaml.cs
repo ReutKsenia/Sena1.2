@@ -35,8 +35,11 @@ namespace senia1._2.View.Pages
 
             EFTaskRepository taskRepository = new EFTaskRepository();
             var task = taskRepository.getByCategory("Notepad").ToList();
-            Notepad.Document.Blocks.Clear();
-            Notepad.Document.Blocks.Add(new Paragraph(new Run(task[0].Value)));
+            if(task.Count() > 0)
+            {
+                Notepad.Document.Blocks.Clear();
+                Notepad.Document.Blocks.Add(new Paragraph(new Run(task[0].Value)));
+            }
         }
 
         private void FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)

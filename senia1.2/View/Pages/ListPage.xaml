@@ -19,11 +19,12 @@
         <StackPanel
             Orientation="Horizontal">
             <Label
-            Grid.Row="0"
-            Content="{Binding Title1}"
-            FontFamily="{DynamicResource BaseFont}"
-            Foreground="{DynamicResource VioletBrush}"
-            FontSize="{DynamicResource H1}" Margin="20,0,0,0"/>
+                x:Name="Title"
+                Grid.Row="0"
+                Content="{Binding Title1}"
+                FontFamily="{DynamicResource BaseFont}"
+                Foreground="{DynamicResource VioletBrush}"
+                FontSize="{DynamicResource H1}" Margin="20,0,0,0"/>
         </StackPanel>
         <ScrollViewer
             Grid.Row="1" 
@@ -32,7 +33,7 @@
                 Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Width}" 
                 Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Height}"
                 VerticalAlignment="Top">
-                <usercontrol:AddTask/>
+                <usercontrol:AddTask x:Name="NewTask" AddMouseClick="NewTask_AddMouseClick" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

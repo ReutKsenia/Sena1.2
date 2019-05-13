@@ -13,6 +13,8 @@ namespace senia1._2.Repositories
         void add(Task task);
         void update(Task oldTask, Task newTask);
         IEnumerable<Task> getByCategory(string category);
+        IEnumerable<Task> getByValueAndCategory(string value, string category);
         IEnumerable<Task> getByListId(int id);
+        Task getById(int id);
     }
 }

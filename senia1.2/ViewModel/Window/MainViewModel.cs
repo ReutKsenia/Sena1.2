@@ -28,7 +28,7 @@ namespace senia1._2.ViewModel
         private Page NextSevenDays;
         private Page Calendar;
         private Page Notepad;
-        private Page List;
+        private View.Pages.ListPage List;
         private Page Welcome;
 
         private EFUserRepository userRepository = new EFUserRepository();
@@ -138,6 +138,7 @@ namespace senia1._2.ViewModel
         {
             ListPageViewMdel listPageView = (ListPageViewMdel)List.DataContext;
             listPageView.Title1 = title;
+            List.getTasks();
             CurrentPage = List;
         }
 

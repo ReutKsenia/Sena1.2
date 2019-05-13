@@ -46,10 +46,5 @@ namespace senia1._2.View.UserControls
         }
 
         public event RoutedEventHandler AddMouseClick;
-        //private void AddTask1_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (AddMouseClick != null)
-        //        AddMouseClick(sender, e);
-        //}
     }
 }
