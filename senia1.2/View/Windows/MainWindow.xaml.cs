@@ -26,6 +26,9 @@ namespace senia1._2.View.Windows
         {
             InitializeComponent();
             DataContext = main;
+            lists.SelectedItem = null;
+            //System.Windows.Resources.StreamResourceInfo info = Application.GetResourceStream(new Uri("/senia1.2;component/View/Cursor/Blue Gel Wait.cur", UriKind.Relative));
+            //this.Cursor = new System.Windows.Input.Cursor(info.Stream);
         }
 
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
@@ -59,8 +62,8 @@ namespace senia1._2.View.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             grid2.Visibility = Visibility.Visible;
-            TitleList.Focus();
             exp.IsExpanded = true;
+            TitleList.Focus();
         }
 
         private void AddList_Click(object sender, RoutedEventArgs e)
@@ -72,6 +75,8 @@ namespace senia1._2.View.Windows
             else
             {
                 main.addLists(TitleList.Text);
+                TitleList.Text = "";
+                TitleList.Focus();
             }
         }
 
@@ -82,7 +87,10 @@ namespace senia1._2.View.Windows
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            main.SelectedList(lists.SelectedItem.ToString());
+            if(lists.SelectedItem != null)
+            {
+                main.SelectedList(lists.SelectedItem.ToString());
+            }
         }
     }
 }

@@ -17,24 +17,24 @@ using System.Windows.Shapes;
 namespace senia1._2.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для NextDay4Control.xaml
+    /// Логика взаимодействия для NextDay7Control.xaml
     /// </summary>
-    public partial class NextDay4Control : UserControl
+    public partial class NextDay7Control : UserControl
     {
-        public NextDay4Control()
+        public NextDay7Control()
         {
             InitializeComponent();
-            DataContext = new ViewModel.UserControls.NextDay4ViewModel();
+            DataContext = new ViewModel.UserControls.NextDay7ViewModel();
 
             getTasks();
         }
 
         private void AddTask_Clik(object sender, RoutedEventArgs e)
         {
-            if (NextDay4.Task1.Text == "")
+            if (NextDay7.Task1.Text == "")
             {
-                NextDay4.Add.Visibility = Visibility.Visible;
-                NextDay4.grid2.Visibility = Visibility.Hidden;
+                NextDay7.Add.Visibility = Visibility.Visible;
+                NextDay7.grid2.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -43,35 +43,36 @@ namespace senia1._2.View.UserControls
                 DateTime date = DateTime.Now;
 
                 Model.Task task1 = new Model.Task();
-                task1.Value = NextDay4.Task1.Text;
-                task1.Category = "NextDay4";
+                task1.Value = NextDay7.Task1.Text;
+                task1.Category = "NextDay7";
                 task1.DateExpected = date;
-                task1.ListId = listRepository.getByName("NextDay4").id;
+                task1.ListId = listRepository.getByName("NextDay7").id;
                 task1.Completed = false;
 
                 Task task = new Task();
-                task.textBlock.Text = NextDay4.Task1.Text;
-                if (NextDay4.Priority4.IsChecked == true)
+                task.textBlock.Text = NextDay7.Task1.Text;
+                if (NextDay7.Priority4.IsChecked == true)
                 {
                     task1.Priority = "не важно и не срочно";
                 }
-                if (NextDay4.Priority3.IsChecked == true)
+                if (NextDay7.Priority3.IsChecked == true)
                 {
                     task1.Priority = "не важно и срочно";
-                    task.checkBox.BorderBrush = NextDay4.Priority3.BorderBrush;
+                    task.checkBox.BorderBrush = NextDay7.Priority3.BorderBrush;
                 }
-                if (NextDay4.Priority2.IsChecked == true)
+                if (NextDay7.Priority2.IsChecked == true)
                 {
                     task1.Priority = "важно и не срочно";
-                    task.checkBox.BorderBrush = NextDay4.Priority2.BorderBrush;
+                    task.checkBox.BorderBrush = NextDay7.Priority2.BorderBrush;
                 }
-                if (NextDay4.Priority1.IsChecked == true)
+                if (NextDay7.Priority1.IsChecked == true)
                 {
                     task1.Priority = "важно и срочно";
-                    task.checkBox.BorderBrush = NextDay4.Priority1.BorderBrush;
+                    task.checkBox.BorderBrush = NextDay7.Priority1.BorderBrush;
                 }
-                NextDay4.l.Items.Add(task);
-                
+
+                NextDay7.l.Items.Add(task);
+
                 taskRepository.add(task1);
                 task.Id = task1.id;
 
@@ -101,20 +102,21 @@ namespace senia1._2.View.UserControls
                 {
                     var result = taskRepository.getById(task.Id);
                     taskRepository.delete(result);
-                    NextDay4.l.Items.Remove(task);
+                    NextDay7.l.Items.Remove(task);
                 };
-                NextDay4.Task1.Text = "";
-                NextDay4.Task1.Focus();
+
+                NextDay7.Task1.Text = "";
+                NextDay7.Task1.Focus();
 
 
             }
-        }
+        }//
 
         private void getTasks()
         {
             EFTaskRepository taskRepository = new EFTaskRepository();
 
-            var result = taskRepository.getByCategory("NextDay4").ToList();
+            var result = taskRepository.getByCategory("NextDay7").ToList();
             if (result.Count() > 0)
             {
                 for (int i = 0; i < result.Count(); i++)
@@ -143,7 +145,7 @@ namespace senia1._2.View.UserControls
                     {
                         task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 1, 1));
                     }
-                    NextDay4.l.Items.Add(task);
+                    NextDay7.l.Items.Add(task);
 
 
                     var result1 = taskRepository.getById(task.Id);
@@ -172,7 +174,7 @@ namespace senia1._2.View.UserControls
                     task.Delete.Click += (o, a) =>
                     {
                         taskRepository.delete(result1);
-                        NextDay4.l.Items.Remove(task);
+                        NextDay7.l.Items.Remove(task);
                     };
                 }
             }
@@ -182,13 +184,13 @@ namespace senia1._2.View.UserControls
         {
             EFTaskRepository taskRepository = new EFTaskRepository();
 
-            var result = taskRepository.getByCategory("NextDay4").ToList();
-            if (result.Count() != 0)
+            var result = taskRepository.getByCategory("NextDay7").ToList();
+            if(result.Count() != 0)
             {
                 for (int i = 0; i < result.Count(); i++)
                 {
                     taskRepository.delete(result[i]);
-                    NextDay4.l.Items.Clear();
+                    NextDay7.l.Items.Clear();
                 }
             }
         }

@@ -42,10 +42,36 @@ namespace senia1._2.View.UserControls
                 EFListRepository listRepository = new EFListRepository();
                 DateTime date = DateTime.Now;
 
+                Model.Task task1 = new Model.Task();
+                task1.Value = NextDay2.Task1.Text;
+                task1.Category = "NextDay2";
+                task1.DateExpected = date;
+                task1.ListId = listRepository.getByName("NextDay2").id;
+                task1.Completed = false;
+
                 Task task = new Task();
                 task.textBlock.Text = NextDay2.Task1.Text;
+                if (NextDay2.Priority4.IsChecked == true)
+                {
+                    task1.Priority = "не важно и не срочно";
+                }
+                if (NextDay2.Priority3.IsChecked == true)
+                {
+                    task1.Priority = "не важно и срочно";
+                    task.checkBox.BorderBrush = NextDay2.Priority3.BorderBrush;
+                }
+                if (NextDay2.Priority2.IsChecked == true)
+                {
+                    task1.Priority = "важно и не срочно";
+                    task.checkBox.BorderBrush = NextDay2.Priority2.BorderBrush;
+                }
+                if (NextDay2.Priority1.IsChecked == true)
+                {
+                    task1.Priority = "важно и срочно";
+                    task.checkBox.BorderBrush = NextDay2.Priority1.BorderBrush;
+                }
                 NextDay2.l.Items.Add(task);
-                Model.Task task1 = new Model.Task(NextDay2.Task1.Text, "NextDay2", date.AddDays(2), listRepository.getByName("NextDay2").id, false, "не важно и не срочно");
+               
                 taskRepository.add(task1);
                 task.Id = task1.id;
 
@@ -104,6 +130,19 @@ namespace senia1._2.View.UserControls
                     {
                         task.checkBox.IsChecked = false;
                     }
+
+                    if (result[i].Priority == "не важно и срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(65, 247, 28));
+                    }
+                    if (result[i].Priority == "важно и не срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(254, 255, 8));
+                    }
+                    if (result[i].Priority == "важно и срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 1, 1));
+                    }
                     NextDay2.l.Items.Add(task);
 
                     var result1 = taskRepository.getById(task.Id);
@@ -134,6 +173,21 @@ namespace senia1._2.View.UserControls
                         taskRepository.delete(result1);
                         NextDay2.l.Items.Remove(task);
                     };
+                }
+            }
+        }
+
+        private void Trash_Click(object sender, RoutedEventArgs e)
+        {
+            EFTaskRepository taskRepository = new EFTaskRepository();
+
+            var result = taskRepository.getByCategory("NextDay2").ToList();
+            if (result.Count() != 0)
+            {
+                for (int i = 0; i < result.Count(); i++)
+                {
+                    taskRepository.delete(result[i]);
+                    NextDay2.l.Items.Clear();
                 }
             }
         }

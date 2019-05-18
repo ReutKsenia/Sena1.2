@@ -128,6 +128,7 @@
     <Compile Include="ViewModel\Converters\DateConverter.cs" />
     <Compile Include="ViewModel\Converters\DayBorderColorConverter.cs" />
     <Compile Include="ViewModel\Pages\ListPageViewMdel.cs" />
+    <Compile Include="ViewModel\Speech\Speech.cs" />
     <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
     <Compile Include="ViewModel\Pages\CalendarPageViewModel.cs" />
     <Compile Include="ViewModel\UserControls\Calendar.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="ViewModel\UserControls\NextDay4ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay5ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\NextDay6ViewModel.cs" />
+    <Compile Include="ViewModel\UserControls\NextDay7ViewModel.cs" />
     <Compile Include="ViewModel\UserControls\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserControls\TodayControlViewModel.cs" />
     <Compile Include="ViewModel\Window\CurrentUser.cs" />
@@ -163,14 +165,11 @@
     <Compile Include="View\Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\AddList.xaml.cs">
-      <DependentUpon>AddList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UserControls\AddTask.xaml.cs">
       <DependentUpon>AddTask.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\AddTaskDay.xaml.cs">
-      <DependentUpon>AddTaskDay.xaml</DependentUpon>
+    <Compile Include="View\UserControls\List.xaml.cs">
+      <DependentUpon>List.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\ModifyTask.xaml.cs">
       <DependentUpon>ModifyTask.xaml</DependentUpon>
@@ -192,6 +191,9 @@
     </Compile>
     <Compile Include="View\UserControls\NextDay6Control.xaml.cs">
       <DependentUpon>NextDay6Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NextDay7Control.xaml.cs">
+      <DependentUpon>NextDay7Control.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\Task.xaml.cs">
       <DependentUpon>Task.xaml</DependentUpon>
@@ -254,19 +256,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Styles\Storyboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControls\AddList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\UserControls\AddTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\AddTaskDay.xaml">
+    <Page Include="View\UserControls\List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\NextDay6Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NextDay7Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,9 +357,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Themes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="View\Images\icons8-s-96.ico" />
   </ItemGroup>
@@ -396,9 +392,6 @@
     <Resource Include="View\Images\ярлык.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Images\doutzen-kroes-victoria-s-7073.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -412,7 +405,14 @@
       <DependentUpon>ToDoModel.edmx</DependentUpon>
       <LastGenOutput>ToDoModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="View\Images\Welcome2.png" />
+    <Resource Include="View\Cursor\Yellow Gel Wait.cur" />
+    <Resource Include="View\Cursor\Red Gel Wait.cur" />
+    <Resource Include="View\Cursor\Pink Gel Wait.cur" />
+    <Resource Include="View\Cursor\Orange Gel Wait.cur" />
+    <Resource Include="View\Cursor\Green Gel Wait.cur" />
+    <Resource Include="View\Cursor\Blue Gel Wait.cur" />
+    <Resource Include="View\Cursor\Purple Gel Wait.cur" />
+    <Resource Include="View\Images\doutzen-kroes-victoria-s-7073.jpg" />
     <Resource Include="View\Images\Welcome.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

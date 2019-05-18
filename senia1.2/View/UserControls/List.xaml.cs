@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace senia1._2.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для AddTaskDay.xaml
+    /// Логика взаимодействия для List.xaml
     /// </summary>
-    public partial class AddTaskDay : UserControl
+    public partial class List : UserControl
     {
-        public AddTaskDay()
+        public List()
         {
             InitializeComponent();
         }

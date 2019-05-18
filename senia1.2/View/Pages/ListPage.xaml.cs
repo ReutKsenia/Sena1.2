@@ -23,10 +23,12 @@ namespace senia1._2.View.Pages
     /// </summary>
     public partial class ListPage : Page
     {
+        public ListPageViewMdel listPageViewMdel;
         public ListPage()
         {
             InitializeComponent();
-            DataContext = new ListPageViewMdel();
+            listPageViewMdel = new ListPageViewMdel();
+            DataContext = listPageViewMdel;
         }
 
         private void NewTask_AddMouseClick(object sender, RoutedEventArgs e)
@@ -42,10 +44,37 @@ namespace senia1._2.View.Pages
                 EFListRepository listRepository = new EFListRepository();
                 DateTime date = DateTime.Now;
 
+                Model.Task task1 = new Model.Task();
+                task1.Value = NewTask.Task1.Text;
+                task1.Category = Title.Content.ToString();
+                task1.DateExpected = date;
+                task1.ListId = listRepository.getByName(Title.Content.ToString()).id;
+                task1.Completed = false;
+
                 Task task = new Task();
                 task.textBlock.Text = NewTask.Task1.Text;
+                if (NewTask.Priority4.IsChecked == true)
+                {
+                    task1.Priority = "не важно и не срочно";
+                }
+                if (NewTask.Priority3.IsChecked == true)
+                {
+                    task1.Priority = "не важно и срочно";
+                    task.checkBox.BorderBrush = NewTask.Priority3.BorderBrush;
+                }
+                if (NewTask.Priority2.IsChecked == true)
+                {
+                    task1.Priority = "важно и не срочно";
+                    task.checkBox.BorderBrush = NewTask.Priority2.BorderBrush;
+                }
+                if (NewTask.Priority1.IsChecked == true)
+                {
+                    task1.Priority = "важно и срочно";
+                    task.checkBox.BorderBrush = NewTask.Priority1.BorderBrush;
+                }
+
                 NewTask.l.Items.Add(task);
-                Model.Task task1 = new Model.Task(NewTask.Task1.Text, Title.Content.ToString(), date, listRepository.getByName(Title.Content.ToString()).id, false, "не важно и не срочно");
+
                 taskRepository.add(task1);
                 task.Id = task1.id;
 
@@ -103,6 +132,19 @@ namespace senia1._2.View.Pages
                     {
                         task.checkBox.IsChecked = false;
                     }
+
+                    if (result[i].Priority == "не важно и срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(65, 247, 28));
+                    }
+                    if (result[i].Priority == "важно и не срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(254, 255, 8));
+                    }
+                    if (result[i].Priority == "важно и срочно")
+                    {
+                        task.checkBox.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 1, 1));
+                    }
                     NewTask.l.Items.Add(task);
 
                     var result1 = taskRepository.getById(task.Id);
@@ -138,6 +180,21 @@ namespace senia1._2.View.Pages
             else
             {
                 NewTask.l.Items.Clear();
+            }
+        }
+
+        private void Trash_Click(object sender, RoutedEventArgs e)
+        {
+            EFTaskRepository taskRepository = new EFTaskRepository();
+
+            var result = taskRepository.getByCategory(Title.Content.ToString()).ToList();
+            if(result.Count() != 0)
+            {
+                for (int i = 0; i < result.Count(); i++)
+                {
+                    taskRepository.delete(result[i]);
+                    NewTask.l.Items.Clear();
+                }
             }
         }
     }

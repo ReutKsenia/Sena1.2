@@ -17,7 +17,8 @@
         Icon="/senia1.2;component/View/Images/icons8-s-96.ico" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
-        MouseDown="MainWindow1_MouseDown">
+        MouseDown="MainWindow1_MouseDown"
+        >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -195,7 +196,9 @@
                                                             Foreground="{DynamicResource BaseWhiteBrush}"
                                                             BorderBrush="{x:Null}" 
                                                             Background="{x:Null}"
-                                                            ItemsSource="{Binding Lists}" SelectionChanged="ListBox_SelectionChanged"/>
+                                                            ItemsSource="{Binding Lists}"
+                                                            SelectionChanged="ListBox_SelectionChanged"
+                                                            SelectedItem="{Binding SelectedList}"/>
                                                     </StackPanel>
                                                     <Grid x:Name="grid2"
                                                         Visibility="{Binding OpacityControl, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed}" Grid.RowSpan="2">
@@ -289,6 +292,9 @@
                                             />
                                     </Button>
                                 </Grid>
+                                <StackPanel Orientation="Horizontal" Height="42">
+                                    
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                         <Label

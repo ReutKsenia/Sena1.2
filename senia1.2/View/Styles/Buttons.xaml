@@ -100,15 +100,15 @@
 
     <ControlTemplate x:Key="RadioButtonMenu" TargetType="{x:Type RadioButton}">
         <Grid>
-        <Rectangle x:Name="rectangle" RadiusY="0" RadiusX="0" Height="61" Width="277" Visibility="Hidden">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FF5A3582" Opacity="0.2"/>
-            </Rectangle.Fill>
-            <Rectangle.Stroke>
-                <SolidColorBrush Color="#FF8C36C7" Opacity="0.5"/>
-            </Rectangle.Stroke>
-        </Rectangle>
-        <ContentPresenter/>
+            <Rectangle x:Name="rectangle" RadiusY="0" RadiusX="0" Height="61" Width="277" Visibility="Hidden">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FF5A3582" Opacity="0.2"/>
+                </Rectangle.Fill>
+                <Rectangle.Stroke>
+                    <SolidColorBrush Color="#FF8C36C7" Opacity="0.5"/>
+                </Rectangle.Stroke>
+            </Rectangle>
+            <ContentPresenter/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="GroupName" Value=""/>
@@ -123,6 +123,43 @@
 
     <ControlTemplate x:Key="ButtonControl" TargetType="{x:Type Button}">
         <ContentPresenter/>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="Priority" TargetType="{x:Type RadioButton}">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CheckStates">
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="contentPresenter">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.356"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="contentPresenter">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.389"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentPresenter">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.599"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="contentPresenter">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unchecked"/>
+                    <VisualState x:Name="Indeterminate"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <ContentPresenter x:Name="contentPresenter" RenderTransformOrigin="0.5,0.5">
+                <ContentPresenter.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ContentPresenter.RenderTransform>
+            </ContentPresenter>
+        </Grid>
     </ControlTemplate>
 
     <ControlTemplate x:Key="ButtonAdd" TargetType="{x:Type Button}">

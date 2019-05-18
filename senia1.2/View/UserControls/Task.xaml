@@ -116,14 +116,14 @@
             <DockPanel x:Name="tas" Height="25">
             <Grid DockPanel.Dock="Left">
                 <CheckBox 
-            x:Name="checkBox" 
-            HorizontalAlignment="Left" 
-            Width="192" 
-            Style="{DynamicResource CheckBoxStyle1}" 
-            Background="{x:Null}" 
-            BorderBrush="{DynamicResource VioletBrush}" 
-            Foreground="{DynamicResource VioletBrush}" 
-            Height="26" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                    x:Name="checkBox" 
+                    HorizontalAlignment="Left" 
+                    Width="192" 
+                    Style="{DynamicResource CheckBoxStyle1}" 
+                    Background="{x:Null}" 
+                    BorderBrush="{DynamicResource VioletBrush}" 
+                    Foreground="{DynamicResource VioletBrush}" 
+                    Height="26" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
                 <TextBlock 
             x:Name="textBlock" 
             Height="26" 

@@ -19,12 +19,12 @@
                 Content="Добро пожаловать! Чем хотите заняться?" 
                 Foreground="{DynamicResource VioletBrush}"
                 FontFamily="{DynamicResource BaseFont}"
-                FontSize="{DynamicResource Big}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,-11,0,0" VerticalAlignment="Top" Height="93"
+                FontSize="{DynamicResource Big}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="44"
                 />
             <ContentControl
                 DockPanel.Dock="Top"
                 VerticalAlignment="Stretch"
-                Content="{DynamicResource Welcome}" Height="405" Width="792"/>
+                Content="{DynamicResource Welcome}" Height="450" Width="850"/>
         </DockPanel>
 
     </Grid>

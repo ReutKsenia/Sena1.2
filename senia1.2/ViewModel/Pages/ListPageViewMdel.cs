@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace senia1._2.ViewModel.Pages
 {
 
-    class ListPageViewMdel : ViewModelBase
+    public class ListPageViewMdel : ViewModelBase
     {
         private string _title;
         public string Title1

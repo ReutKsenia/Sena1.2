@@ -19,11 +19,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using senia1._2.ViewModel.Pages;
+using System.Linq;
 
 namespace senia1._2.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        #region пол€ и свойства
         private Page Today;
         private Page NextSevenDays;
         private Page Calendar;
@@ -31,8 +33,11 @@ namespace senia1._2.ViewModel
         private View.Pages.ListPage List;
         private Page Welcome;
 
+        Speech.Speech speech;
+
         private EFUserRepository userRepository = new EFUserRepository();
         private EFListRepository listRepository = new EFListRepository();
+        private EFTaskRepository taskRepository = new EFTaskRepository();
 
         private Page _currentPage;
         public Page CurrentPage
@@ -48,7 +53,6 @@ namespace senia1._2.ViewModel
             set { _frameOpacity= value; RaisePropertyChanged(() => FrameOpacity); }
         }
 
-        System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
         private DateTime date = DateTime.Now;
         private string _day;
         public string Day
@@ -77,12 +81,10 @@ namespace senia1._2.ViewModel
             get { return lists; }
             set { lists = value; RaisePropertyChanged(() => Lists); }
         }
-
-        
+        #endregion
 
         public MainViewModel()
         {
-            
             Today = new View.Pages.TodayPage();
             NextSevenDays = new View.Pages.NextSevenDaysPage();
             Calendar = new View.Pages.CalendarPage();
@@ -100,13 +102,35 @@ namespace senia1._2.ViewModel
                 Image = ConvertByteArrayToImage(CurrentUser.User.Foto);
             }
             Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
+
+            List.DeleteList.Click += (o, a) =>
+            {
+                var result = listRepository.getByName(List.listPageViewMdel.Title1);
+                listRepository.delete(result);
+                var allTasks = taskRepository.getByCategory(List.listPageViewMdel.Title1).ToList();
+                for(int i=0; i<allTasks.Count(); i++)
+                {
+                    taskRepository.delete(allTasks[i]);
+                }
+                Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
+                CurrentPage = Today;
+            };
+            speech = new Speech.Speech();
+            speech.SpeechSynthesis("–ада вас приветствовать. „ем хотите зан€тьс€?");
         }
 
+        #region команды
         public ICommand MenuToday_Click
         {
             get
             {
-                return new RelayCommand(() => ShowOpacity(Today));
+                return new RelayCommand(() =>
+                {
+                    if(CurrentPage != Today)
+                    {
+                        ShowOpacity(Today);
+                    }
+                });
             }
         }
 
@@ -114,7 +138,13 @@ namespace senia1._2.ViewModel
         {
             get
             {
-                return new RelayCommand(() => ShowOpacity(NextSevenDays));
+                return new RelayCommand(() => 
+                {
+                    if (CurrentPage != NextSevenDays)
+                    {
+                        ShowOpacity(NextSevenDays);
+                    }
+                });
             }
         }
 
@@ -122,7 +152,13 @@ namespace senia1._2.ViewModel
         {
             get
             {
-                return new RelayCommand(() => ShowOpacity(Calendar));
+                return new RelayCommand(() => 
+                {
+                    if (CurrentPage != Calendar)
+                    {
+                        ShowOpacity(Calendar);
+                    }
+                });
             }
         }
 
@@ -130,10 +166,30 @@ namespace senia1._2.ViewModel
         {
             get
             {
-                return new RelayCommand(() => ShowOpacity(Notepad));
+                return new RelayCommand(() => 
+                {
+                    if (CurrentPage != Notepad)
+                    {
+                        ShowOpacity(Notepad);
+                    }
+                });
             }
         }
 
+        public ICommand AddFoto_Click
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    addFoto();
+                    Image = ConvertByteArrayToImage(CurrentUser.User.Foto);
+                });
+            }
+        }
+        #endregion
+
+        #region методы
         public void SelectedList(string title)
         {
             ListPageViewMdel listPageView = (ListPageViewMdel)List.DataContext;
@@ -202,22 +258,11 @@ namespace senia1._2.ViewModel
             userRepository.update(CurrentUser.User, CurrentUser.User);
         }
 
-        public ICommand AddFoto_Click
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    addFoto();
-                    Image = ConvertByteArrayToImage(CurrentUser.User.Foto);
-                });
-            }
-        }
-
         public void addLists(string title)
         {
             listRepository.add(new List(title, date, CurrentUser.User.Id));
             Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
         }
+        #endregion
     }
 }

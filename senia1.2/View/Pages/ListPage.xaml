@@ -16,6 +16,28 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,0">
+                <Button
+                    x:Name="Trash"
+                    Template="{DynamicResource ButtonControl}"
+                    Content="{DynamicResource TrashIcon}" 
+                    Margin="0,0,0,2.8" 
+                    Width="29" 
+                    Height="Auto" 
+                    ToolTip="Очистить список" Click="Trash_Click">
+                </Button>
+                <Button
+                    x:Name="DeleteList"
+                    Template="{DynamicResource ButtonControl}"
+                    Content="{DynamicResource DeleteIcon}" 
+                    Height="Auto" 
+                    Margin="0,0,0,10" 
+                    Width="31"
+                    ToolTip="Удалить список">
+                </Button>
+            </StackPanel>
+        </Grid>
         <StackPanel
             Orientation="Horizontal">
             <Label

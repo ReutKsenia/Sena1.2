@@ -14,13 +14,13 @@
     <Grid>
         <ScrollViewer Margin="0,3,4,3">
             <StackPanel Orientation="Vertical">
-                <usercontrol:TodayControl/>
                 <usercontrol:NextDay1Control/>
                 <usercontrol:NextDay2Control/>
                 <usercontrol:NextDay3Control/>
                 <usercontrol:NextDay4Control/>
                 <usercontrol:NextDay5Control/>
                 <usercontrol:NextDay6Control/>
+                <usercontrol:NextDay7Control/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

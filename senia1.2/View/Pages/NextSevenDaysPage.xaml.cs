@@ -23,7 +23,7 @@ namespace senia1._2.View.Pages
         public NextSevenDaysPage()
         {
             InitializeComponent();
-            DataContext = new ViewModel.UserControls.NextDay1ViewModel();
+            //DataContext = new ViewModel.UserControls.NextDay1ViewModel();
         }
     }
 }
