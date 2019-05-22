@@ -23,6 +23,7 @@ namespace senia1._2.View.UserControls
     /// </summary>
     public partial class Task : UserControl
     {
+        UnitOfWork unit = new UnitOfWork();
         public Task()
         {
             InitializeComponent();
@@ -34,9 +35,8 @@ namespace senia1._2.View.UserControls
         {
             textBlock.TextDecorations = TextDecorations.Strikethrough;
 
-            EFTaskRepository taskRepository = new EFTaskRepository();
-            var result = taskRepository.getById(this.Id);
-            taskRepository.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, true, result.Priority));
+            var result = unit.Task.getById(this.Id);
+            unit.Task.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, true, result.Priority));
         }
         
 
@@ -44,9 +44,8 @@ namespace senia1._2.View.UserControls
         {
             textBlock.TextDecorations = null;
 
-            EFTaskRepository taskRepository = new EFTaskRepository();
-            var result = taskRepository.getById(this.Id);
-            taskRepository.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, false, result.Priority));
+            var result = unit.Task.getById(this.Id);
+            unit.Task.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, false, result.Priority));
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)

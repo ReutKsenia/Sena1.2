@@ -59,6 +59,10 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Speech, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Speech\v11.0\Assembly\Microsoft.Speech.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -96,39 +100,42 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\List.cs">
-      <DependentUpon>ToDoModel.tt</DependentUpon>
+      <DependentUpon>ToDo.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Task.cs">
-      <DependentUpon>ToDoModel.tt</DependentUpon>
+      <DependentUpon>ToDo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ToDoModel.Context.cs">
+    <Compile Include="Model\ToDo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToDoModel.Context.tt</DependentUpon>
+      <DependentUpon>ToDo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ToDoModel.cs">
+    <Compile Include="Model\ToDo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToDoModel.tt</DependentUpon>
+      <DependentUpon>ToDo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ToDoModel.Designer.cs">
+    <Compile Include="Model\ToDo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToDoModel.edmx</DependentUpon>
+      <DependentUpon>ToDo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">
-      <DependentUpon>ToDoModel.tt</DependentUpon>
+      <DependentUpon>ToDo.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\EFListRepository .cs" />
     <Compile Include="Repositories\EFTaskRepository .cs" />
     <Compile Include="Repositories\EFUserRepository .cs" />
-    <Compile Include="Repositories\IListRepository.cs" />
-    <Compile Include="Repositories\ITaskRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="ViewModel\Converters\DateConverter.cs" />
     <Compile Include="ViewModel\Converters\DayBorderColorConverter.cs" />
     <Compile Include="ViewModel\Pages\ListPageViewMdel.cs" />
+    <Compile Include="ViewModel\Pages\OptionsViewModel.cs" />
     <Compile Include="ViewModel\Speech\Speech.cs" />
+    <Compile Include="ViewModel\Speech\SpeechBinding.cs" />
+    <Compile Include="ViewModel\Speech\SpeechGesture.cs" />
+    <Compile Include="ViewModel\Speech\SpeechGestureConverter.cs" />
     <Compile Include="ViewModel\UserControls\AddTaskViewModel.cs" />
     <Compile Include="ViewModel\Pages\CalendarPageViewModel.cs" />
     <Compile Include="ViewModel\UserControls\Calendar.cs" />
@@ -146,7 +153,6 @@
     <Compile Include="ViewModel\Window\LoginViewModel.cs" />
     <Compile Include="ViewModel\Window\MainViewModel.cs" />
     <Compile Include="ViewModel\Pages\TodayPageViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Pages\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
     </Compile>
@@ -158,6 +164,9 @@
     </Compile>
     <Compile Include="View\Pages\NotepadPage.xaml.cs">
       <DependentUpon>NotepadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\OptionsPage.xaml.cs">
+      <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\TodayPage.xaml.cs">
       <DependentUpon>TodayPage.xaml</DependentUpon>
@@ -217,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\NotepadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\OptionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -339,12 +352,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\ToDoModel.edmx">
+    <EntityDeploy Include="Model\ToDo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ToDoModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ToDo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\ToDoModel.edmx.diagram">
-      <DependentUpon>ToDoModel.edmx</DependentUpon>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="Model\ToDo.edmx.diagram">
+      <DependentUpon>ToDo.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -357,7 +372,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="View\Images\icons8-s-96.ico" />
   </ItemGroup>
@@ -395,25 +409,23 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ToDoModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ToDoModel.edmx</DependentUpon>
-      <LastGenOutput>ToDoModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\ToDoModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ToDoModel.edmx</DependentUpon>
-      <LastGenOutput>ToDoModel.cs</LastGenOutput>
-    </Content>
-    <Resource Include="View\Cursor\Yellow Gel Wait.cur" />
-    <Resource Include="View\Cursor\Red Gel Wait.cur" />
-    <Resource Include="View\Cursor\Pink Gel Wait.cur" />
-    <Resource Include="View\Cursor\Orange Gel Wait.cur" />
-    <Resource Include="View\Cursor\Green Gel Wait.cur" />
-    <Resource Include="View\Cursor\Blue Gel Wait.cur" />
-    <Resource Include="View\Cursor\Purple Gel Wait.cur" />
+    <Resource Include="View\Images\icons8-настройки-filled-50.png" />
+    <Resource Include="View\Images\icons8-вопросительный-знак-filled-96.png" />
     <Resource Include="View\Images\doutzen-kroes-victoria-s-7073.jpg" />
     <Resource Include="View\Images\Welcome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ToDo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDo.edmx</DependentUpon>
+      <LastGenOutput>ToDo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ToDo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDo.edmx</DependentUpon>
+      <LastGenOutput>ToDo.cs</LastGenOutput>
+    </Content>
+    <Resource Include="View\Images\icons8-микрофон-96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

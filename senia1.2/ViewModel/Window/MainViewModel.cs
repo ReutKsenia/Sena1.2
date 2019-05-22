@@ -32,12 +32,10 @@ namespace senia1._2.ViewModel
         private Page Notepad;
         private View.Pages.ListPage List;
         private Page Welcome;
+        private Page Options;
 
         Speech.Speech speech;
-
-        private EFUserRepository userRepository = new EFUserRepository();
-        private EFListRepository listRepository = new EFListRepository();
-        private EFTaskRepository taskRepository = new EFTaskRepository();
+        UnitOfWork unit = new UnitOfWork();
 
         private Page _currentPage;
         public Page CurrentPage
@@ -91,6 +89,7 @@ namespace senia1._2.ViewModel
             List = new View.Pages.ListPage();
             Notepad = new View.Pages.NotepadPage();
             Welcome = new View.Pages.WelcomePage();
+            Options = new View.Pages.OptionsPage();
 
             FrameOpacity = 1;
             CurrentPage = Welcome;
@@ -101,18 +100,26 @@ namespace senia1._2.ViewModel
             {
                 Image = ConvertByteArrayToImage(CurrentUser.User.Foto);
             }
-            Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
+            Lists = unit.List.getNameByUserId(CurrentUser.User.Id);
 
             List.DeleteList.Click += (o, a) =>
             {
-                var result = listRepository.getByName(List.listPageViewMdel.Title1);
-                listRepository.delete(result);
-                var allTasks = taskRepository.getByCategory(List.listPageViewMdel.Title1).ToList();
-                for(int i=0; i<allTasks.Count(); i++)
+                //var result = unit.List.getByName(List.listPageViewMdel.Title1);
+                var result = unit.List.getByUserId(CurrentUser.User.Id).ToList();
+                for(int i = 0; i<result.Count(); i++)
                 {
-                    taskRepository.delete(allTasks[i]);
+                    if(result[i].Title == List.listPageViewMdel.Title1)
+                    {
+                        unit.List.delete(result[i]);
+                        var allTasks = unit.Task.getByListId(result[i].id).ToList();
+                        for (int j = 0; j < allTasks.Count(); j++)
+                        {
+                            unit.Task.delete(allTasks[j]);
+                        }
+                    }
                 }
-                Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
+                
+                Lists = unit.List.getNameByUserId(CurrentUser.User.Id);
                 CurrentPage = Today;
             };
             speech = new Speech.Speech();
@@ -176,6 +183,20 @@ namespace senia1._2.ViewModel
             }
         }
 
+        public ICommand Options_Click
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    if (CurrentPage != Options)
+                    {
+                        ShowOpacity(Options);
+                    }
+                });
+            }
+        }
+
         public ICommand AddFoto_Click
         {
             get
@@ -184,6 +205,18 @@ namespace senia1._2.ViewModel
                 {
                     addFoto();
                     Image = ConvertByteArrayToImage(CurrentUser.User.Foto);
+                });
+            }
+        }
+
+        public ICommand GetTime
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    var time = DateTime.Now;
+                    speech.SpeechSynthesis(time.ToString("HH mm"));
                 });
             }
         }
@@ -255,13 +288,13 @@ namespace senia1._2.ViewModel
                 string selectedFileName = dlg.FileName;
                 CurrentUser.User.Foto = ConvertImageToByteArray(selectedFileName);
             }
-            userRepository.update(CurrentUser.User, CurrentUser.User);
+            unit.User.update(CurrentUser.User, CurrentUser.User);
         }
 
         public void addLists(string title)
         {
-            listRepository.add(new List(title, date, CurrentUser.User.Id));
-            Lists = listRepository.getNameByUserId(CurrentUser.User.Id);
+            unit.List.add(new List(title, date, CurrentUser.User.Id));
+            Lists = unit.List.getNameByUserId(CurrentUser.User.Id);
         }
         #endregion
     }

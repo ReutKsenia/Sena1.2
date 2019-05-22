@@ -84,6 +84,24 @@
         </Viewbox>
     </Grid>
 
+
+    <Grid x:Key="Options">
+        <Viewbox Margin="5" Stretch="Fill">
+            <Image Source="/senia1.2;component/View/Images/icons8-настройки-filled-50.png"/>
+        </Viewbox>
+    </Grid>
+    
+    <Grid x:Key="Help">
+        <Viewbox Margin="5" Stretch="Fill">
+            <Image Source="/senia1.2;component/View/Images/icons8-вопросительный-знак-filled-96.png"/>
+        </Viewbox>
+    </Grid>
+
+    <Grid x:Key="Recognize">
+        <Viewbox Margin="5" Stretch="Fill">
+            <Image Source="/senia1.2;component/View/Images/icons8-микрофон-96.png"/>
+        </Viewbox>
+    </Grid>
     <!--<Grid x:Key="Priority1">
         <Viewbox Margin="5" Stretch="Fill">
             <Ellipse Fill="#FFFF0101" Width="20" Height="20" />

@@ -39,6 +39,13 @@ namespace senia1._2.Model
             password = Password ?? throw new ArgumentNullException(nameof(Password));
         }
 
+        public User(string UserName, string Login, string Password, byte[] Foto)
+        {
+            userName = UserName ?? throw new ArgumentNullException(nameof(UserName));
+            login = Login ?? throw new ArgumentNullException(nameof(Login));
+            password = Password ?? throw new ArgumentNullException(nameof(Password));
+            foto = Foto ?? throw new ArgumentNullException(nameof(Foto));
+        }
         public string userName
         {
             get { return UserName; }
@@ -69,6 +76,15 @@ namespace senia1._2.Model
             }
         }
 
+        public byte[] foto
+        {
+            get { return Foto; }
+            set
+            {
+                Foto = value;
+                OnPropertyChanged("Foto");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)

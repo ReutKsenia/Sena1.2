@@ -21,14 +21,17 @@ namespace senia1._2.View.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public bool Recognize { get; set; }
+        //InputBindingCollection collection;
         MainViewModel main = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = main;
             lists.SelectedItem = null;
-            //System.Windows.Resources.StreamResourceInfo info = Application.GetResourceStream(new Uri("/senia1.2;component/View/Cursor/Blue Gel Wait.cur", UriKind.Relative));
-            //this.Cursor = new System.Windows.Input.Cursor(info.Stream);
+            //collection = this.InputBindings;
+            //this.InputBindings.Clear();
+            
         }
 
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
@@ -92,5 +95,20 @@ namespace senia1._2.View.Windows
                 main.SelectedList(lists.SelectedItem.ToString());
             }
         }
+
+        //private void RecognizeStart_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    if(RecognizeStart.IsChecked != true)
+        //    {
+        //        for(int i=0; i<collection.Count; i++)
+        //        {
+        //            this.InputBindings.Add(collection[i]);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        this.InputBindings.Clear();
+        //    }
+        //}
     }
 }

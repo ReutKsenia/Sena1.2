@@ -24,8 +24,8 @@ namespace senia1._2.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        EFUserRepository userRepository = new EFUserRepository();
-        EFListRepository listRepository = new EFListRepository();
+        UnitOfWork unit = new UnitOfWork();
+
         Speech.Speech speech;
         private DateTime date = DateTime.Now;
 
@@ -100,22 +100,22 @@ namespace senia1._2.ViewModel
                     if (Password1.Equals(Password2))
                     {
                     
-                    User tmp = userRepository.getByLogin(Login);
+                    User tmp = unit.User.getByLogin(Login);
                     if (tmp == null)
                     {
                         string Password = User.getHash(Password1);
                         User user = new User(UserName, Login, Password);
-                        userRepository.add(user);
-                        listRepository.add(new List("Today", date, user.Id));
-                        listRepository.add(new List("NextDay1", date.AddDays(1), user.Id));
-                        listRepository.add(new List("NextDay2", date.AddDays(2), user.Id));
-                        listRepository.add(new List("NextDay3", date.AddDays(3), user.Id));
-                        listRepository.add(new List("NextDay4", date.AddDays(4), user.Id));
-                        listRepository.add(new List("NextDay5", date.AddDays(5), user.Id));
-                        listRepository.add(new List("NextDay6", date.AddDays(6), user.Id));
-                        listRepository.add(new List("NextDay7", date.AddDays(7), user.Id));
-                        listRepository.add(new List("Calendar", date, user.Id));
-                        listRepository.add(new List("Notepad", date, user.Id));
+                            unit.User.add(user);
+                            unit.List.add(new List("Today", date, user.Id));
+                            unit.List.add(new List("NextDay1", date.AddDays(1), user.Id));
+                            unit.List.add(new List("NextDay2", date.AddDays(2), user.Id));
+                            unit.List.add(new List("NextDay3", date.AddDays(3), user.Id));
+                            unit.List.add(new List("NextDay4", date.AddDays(4), user.Id));
+                            unit.List.add(new List("NextDay5", date.AddDays(5), user.Id));
+                            unit.List.add(new List("NextDay6", date.AddDays(6), user.Id));
+                            unit.List.add(new List("NextDay7", date.AddDays(7), user.Id));
+                            unit.List.add(new List("Calendar", date, user.Id));
+                            unit.List.add(new List("Notepad", date, user.Id));
                         speech.SpeechSynthesis("Вы зарегистрированы, теперь вы можете войти в приложение");
                         return true;
                     }
@@ -152,7 +152,7 @@ namespace senia1._2.ViewModel
         {
             if (!String.IsNullOrEmpty(Login1) && !String.IsNullOrEmpty(password))
             {
-                User tmp = userRepository.getByLogin(Login1);
+                User tmp = unit.User.getByLogin(Login1);
                 if (tmp != null)
                 {
                     if (User.getHash(password).Equals(tmp.password))

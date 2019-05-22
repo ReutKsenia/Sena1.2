@@ -7,13 +7,12 @@ using senia1._2.Model;
 
 namespace senia1._2.Repositories
 {
-    class EFUserRepository : IUserRepository
+    class EFUserRepository : IRepository<User>
     {
         private ToDoEntities1 context;
-
-        public EFUserRepository()
+        public EFUserRepository(ToDoEntities1 context)
         {
-            context = new ToDoEntities1();
+            this.context = context;
         }
 
         public List<string> getAllNames()

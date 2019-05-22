@@ -1,5 +1,6 @@
 ﻿using senia1._2.Model;
 using senia1._2.Repositories;
+using senia1._2.ViewModel.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace senia1._2.View.Pages
     /// </summary>
     public partial class NotepadPage : Page
     {
+        UnitOfWork unit = new UnitOfWork();
         public NotepadPage()
         {
             InitializeComponent();
@@ -32,13 +34,18 @@ namespace senia1._2.View.Pages
                 FontSize.Items.Add((double)i);
             }
 
-
-            EFTaskRepository taskRepository = new EFTaskRepository();
-            var task = taskRepository.getByCategory("Notepad").ToList();
-            if(task.Count() > 0)
+            var res = unit.List.getByUserId(CurrentUser.User.Id).ToList();
+            for (int k = 0; k < res.Count(); k++)
             {
-                Notepad.Document.Blocks.Clear();
-                Notepad.Document.Blocks.Add(new Paragraph(new Run(task[0].Value)));
+                if (res[k].Title == "Notepad")
+                {
+                    var result = unit.Task.getByListId(res[k].id).ToList();
+                    if (result.Count() > 0)
+                    {
+                        Notepad.Document.Blocks.Clear();
+                        Notepad.Document.Blocks.Add(new Paragraph(new Run(result[0].Value)));
+                    }
+                }
             }
         }
 
@@ -55,24 +62,42 @@ namespace senia1._2.View.Pages
         {
             FontSize.SelectedValue = (double)Notepad.Selection.GetPropertyValue(TextBlock.FontSizeProperty);
             ToDoEntities1 ctx = new ToDoEntities1();
-            EFListRepository listRepository = new EFListRepository();
-            EFTaskRepository taskRepository = new EFTaskRepository();
             string richText = new TextRange(Notepad.Document.ContentStart, Notepad.Document.ContentEnd).Text;
             DateTime date = DateTime.Now;
 
-            var result = taskRepository.getByCategory("Notepad");
-            if(richText != "")
+            var result1 = unit.List.getByUserId(CurrentUser.User.Id).ToList();
+            for (int i = 0; i < result1.Count(); i++)
             {
-                if (result.Count() <= 0)
+                if (result1[i].Title == "Notepad")
                 {
-                    taskRepository.add(new Model.Task(richText, "Notepad", date, listRepository.getByName("Notepad").id));
-                }
-                else
-                {
-                    Model.Task oldTask = result.FirstOrDefault();
-                    taskRepository.update(oldTask, new Model.Task(richText, "Notepad", date, listRepository.getByName("Notepad").id));
+                    var result = unit.Task.getByListId(result1[i].id);
+                    if (richText != "")
+                    {
+                        if (result.Count() <= 0)
+                        {
+                            unit.Task.add(new Model.Task(richText, "Notepad", date, result1[i].id));
+                        }
+                        else
+                        {
+                            Model.Task oldTask = result.FirstOrDefault();
+                            unit.Task.update(oldTask, new Model.Task(richText, "Notepad", date, result1[i].id));
+                        }
+                    }
                 }
             }
+            //var result = unit.Task.getByCategory("Notepad");
+            //if(richText != "")
+            //{
+            //    if (result.Count() <= 0)
+            //    {
+            //        unit.Task.add(new Model.Task(richText, "Notepad", date, unit.List.getByName("Notepad").id));
+            //    }
+            //    else
+            //    {
+            //        Model.Task oldTask = result.FirstOrDefault();
+            //        unit.Task.update(oldTask, new Model.Task(richText, "Notepad", date, unit.List.getByName("Notepad").id));
+            //    }
+            //}
         }
     }
 }

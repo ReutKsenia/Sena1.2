@@ -30,7 +30,7 @@ namespace senia1._2.Model
 
         }
 
-        public Task(string Value,string Category, Nullable<System.DateTime> DateExpected, Nullable<int> ListId)
+        public Task(string Value, string Category, Nullable<System.DateTime> DateExpected, Nullable<int> ListId)
         {
             value = Value ?? throw new ArgumentNullException(nameof(Value));
             category = Category ?? throw new ArgumentNullException(nameof(Category));

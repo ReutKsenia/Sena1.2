@@ -7,13 +7,12 @@ using senia1._2.Model;
 
 namespace senia1._2.Repositories
 {
-    class EFListRepository : IListRepository
+    class EFListRepository : IRepository<List>
     {
         private ToDoEntities1 context;
-
-        public EFListRepository()
+        public EFListRepository(ToDoEntities1 context)
         {
-            context = new ToDoEntities1();
+            this.context = context;
         }
 
         public void add(List list)
@@ -31,11 +30,6 @@ namespace senia1._2.Repositories
         public IEnumerable<List> getAll()
         {
             return context.List;
-        }
-
-        public List getByName(string name)
-        {
-            return context.List.FirstOrDefault(x => x.Title == name);
         }
 
         public IEnumerable<List> getByUserId(int id)

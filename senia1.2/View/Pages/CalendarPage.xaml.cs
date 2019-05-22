@@ -1,6 +1,7 @@
 ﻿using senia1._2.Model;
 using senia1._2.Repositories;
 using senia1._2.ViewModel.UserControls;
+using senia1._2.ViewModel.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace senia1._2.View.Pages
     /// </summary>
     public partial class CalendarPage : Page
     {
+        UnitOfWork unit = new UnitOfWork();
         public CalendarPage()
         {
             List<string> months = new List<string> { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
@@ -48,20 +50,26 @@ namespace senia1._2.View.Pages
 
         private void getNotesFromDb()
         {
-            EFTaskRepository taskRepository = new EFTaskRepository();
-
-            List<Model.Task> days = taskRepository.getByCategory("Calendar").ToList();
-
-            foreach (Model.Task dbDay in days)
+            var result = unit.List.getByUserId(CurrentUser.User.Id).ToList();
+            for(int i = 0; i<result.Count(); i++)
             {
-                foreach (senia1._2.ViewModel.UserControls.Day calendarDay in Calendar.Days)
+                if (result[i].Title == "Calendar")
                 {
-                    if (calendarDay.Date == dbDay.DateExpected)
+                    List<Model.Task> days = unit.Task.getByListId(result[i].id).ToList();
+                    foreach (Model.Task dbDay in days)
                     {
-                        calendarDay.Notes = dbDay.Value;
+                        foreach (senia1._2.ViewModel.UserControls.Day calendarDay in Calendar.Days)
+                        {
+                            if (calendarDay.Date == dbDay.DateExpected)
+                            {
+                                calendarDay.Notes = dbDay.Value;
+                            }
+                        }
                     }
                 }
             }
+
+           
         }
 
         private void RefreshCalendar()
@@ -83,8 +91,6 @@ namespace senia1._2.View.Pages
         private void Calendar_DayChanged(object sender, ViewModel.UserControls.DayChangedEventArgs e)
         {
             ToDoEntities1 ctx = new ToDoEntities1();
-            EFListRepository listRepository = new EFListRepository();
-            EFTaskRepository taskRepository = new EFTaskRepository();
 
             var results = (from d in ctx.Task where d.DateExpected == e.Day.Date select d);
             
@@ -94,10 +100,16 @@ namespace senia1._2.View.Pages
                     Model.Task newTask = new Model.Task();
                     newTask.DateExpected = e.Day.Date;
                     newTask.Value = e.Day.Notes;
-                    newTask.ListId = listRepository.getByName("Calendar").id;
-                    newTask.Category = "Calendar";
-
-                    taskRepository.add(newTask);
+                    var result = unit.List.getByUserId(CurrentUser.User.Id).ToList();
+                    for(int i = 0; i < result.Count(); i++)
+                    {
+                        if(result[i].Title == "Calendar")
+                        {
+                            newTask.ListId = result[i].id;
+                            newTask.Category = "Calendar";
+                            unit.Task.add(newTask);
+                        }
+                    }
                 }
                 else
                 {
@@ -107,7 +119,7 @@ namespace senia1._2.View.Pages
                     var results2 = (from d in ctx.Task where d.Value == "" select d);
                     if(results2.Count() > 0)
                     {
-                        taskRepository.delete(oldTask);
+                        unit.Task.delete(oldTask);
                     }
                 }
            

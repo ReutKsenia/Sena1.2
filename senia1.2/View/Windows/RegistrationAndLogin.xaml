@@ -16,9 +16,7 @@
         WindowStartupLocation="CenterScreen" 
         FontFamily="{DynamicResource BaseFont}"
         FontSize="{DynamicResource Regular}"
-        Icon="/senia1.2;component/View/Images/icons8-s-96.ico" MouseDown="RegistrationAndLogin1_MouseDown"
-        >
-    
+        Icon="/senia1.2;component/View/Images/icons8-s-96.ico" MouseDown="RegistrationAndLogin1_MouseDown">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
     </Window.CommandBindings>

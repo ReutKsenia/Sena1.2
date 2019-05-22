@@ -12,12 +12,9 @@ namespace senia1._2.ViewModel.UserControls
 {
     public class TaskViewModel : ViewModelBase
     {
+        UnitOfWork unit = new UnitOfWork();
         public Model.Task Task;
-        //public Model.Task Task
-        //{
-        //    get { return task; }
-        //    set { task = value; RaisePropertyChanged(() => Task); }
-        //}
+
         private string _decoration;
         public string Decoration
         {
@@ -44,18 +41,17 @@ namespace senia1._2.ViewModel.UserControls
             {
                 return new RelayCommand(() =>
                 {
-                    EFTaskRepository taskRepository = new EFTaskRepository();
                     if (State == true)
                     {
                         Decoration = "Strikethrough";
-                        var result = taskRepository.getById(Task.id);
-                        taskRepository.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, true, result.Priority));
+                        var result = unit.Task.getById(Task.id);
+                        unit.Task.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, true, result.Priority));
                     }
                    else
                     {
                         Decoration = null;
-                        var result = taskRepository.getById(Task.id);
-                        taskRepository.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, false, result.Priority));
+                        var result = unit.Task.getById(Task.id);
+                        unit.Task.update(result, new Model.Task(result.Value, result.Category, result.DateExpected, result.ListId, false, result.Priority));
                     }
                 });
             }

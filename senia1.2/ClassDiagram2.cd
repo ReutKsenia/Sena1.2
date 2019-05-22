@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="senia1._2.App" Collapsed="true">
+    <Position X="2" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Model.ToDoEntities1">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAI=</HashCode>
+      <FileName>Model\ToDo.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Model.List">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAEAAAAAAAAgAAAAEAAAAAEAAAAAAAgA=</HashCode>
+      <FileName>Model\List.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Model.Task">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEAAAAAAAEAAAAAAAAAAAgACAACgI=</HashCode>
+      <FileName>Model\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Model.User">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAQQAAAAAI=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Properties.Resources" Collapsed="true">
+    <Position X="3.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Properties.Settings" Collapsed="true">
+    <Position X="5.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.Repositories.EFListRepository" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAAAAAAAAAAAAEAAAQAAAAAAAAAAAAAAAAIGAAA=</HashCode>
+      <FileName>Repositories\EFListRepository .cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.Repositories.EFTaskRepository" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAgAIGAAA=</HashCode>
+      <FileName>Repositories\EFTaskRepository .cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.Repositories.EFUserRepository" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAAAAAQAAAAAAAAAABAAAAAIGAAA=</HashCode>
+      <FileName>Repositories\EFUserRepository .cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.Repositories.UnitOfWork">
+    <Position X="32" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQIAAAAI=</HashCode>
+      <FileName>Repositories\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.View.Pages.CalendarPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAgAAAACAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Pages\CalendarPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.ListPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAAAAAAAAAAAAAAAIAAAAAAQEAAAAA=</HashCode>
+      <FileName>View\Pages\ListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.NextSevenDaysPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Pages\NextSevenDaysPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.NotepadPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Pages\NotepadPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.OptionsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAABAgAgAAAAAAACAQ=</HashCode>
+      <FileName>View\Pages\OptionsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.TodayPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Pages\TodayPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Pages.WelcomePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Pages\WelcomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.AddTask" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAACAAIAAAAA=</HashCode>
+      <FileName>View\UserControls\AddTask.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.List" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\List.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.ModifyTask" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\ModifyTask.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay1Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay1Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay2Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay2Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay3Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay3Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay4Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay4Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay5Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay5Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay6Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay6Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.NextDay7Control" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\NextDay7Control.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.Task" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgEAAAAAAAAAIAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>View\UserControls\Task.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.UserControls.TodayControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAkAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UserControls\TodayControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Windows.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAABAGAAAAAACAAgCAAAABAAAQ=</HashCode>
+      <FileName>View\Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.View.Windows.RegistrationAndLogin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAEAAQAAAAAAACgAAAAAAAA=</HashCode>
+      <FileName>View\Windows\RegistrationAndLogin.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.ViewModel.Converters.DateConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\DateConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.ViewModel.Converters.DayBorderColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\DayBorderColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.ViewModel.CalendarPageViewModel" Collapsed="true">
+    <Position X="6.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAgAAAAAAAAAAAAAAQAAAEEAAAIAAAAAQI=</HashCode>
+      <FileName>ViewModel\Pages\CalendarPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.TodayPageViewModel" Collapsed="true">
+    <Position X="10" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Pages\TodayPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.AddTaskViewModel" Collapsed="true">
+    <Position X="4.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAABAAAAAAAAAACAAAFAAAAACAEAACAAAAAAACAAA=</HashCode>
+      <FileName>ViewModel\UserControls\AddTaskViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.LoginViewModel" Collapsed="true">
+    <Position X="4.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAKAAAAAAAgAACAAACAQQQAwEAEAA=</HashCode>
+      <FileName>ViewModel\Window\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.MainViewModel" Collapsed="true">
+    <Position X="6.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAgECAIyAgABAAAAEAIAAhAAAKURBFASJIAUJAAAI=</HashCode>
+      <FileName>ViewModel\Window\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.Pages.ListPageViewMdel" Collapsed="true">
+    <Position X="10" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Pages\ListPageViewMdel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.Pages.OptionsViewModel" Collapsed="true">
+    <Position X="6.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAIAAAAAAAAAAAAAAQYQIAAAAAA=</HashCode>
+      <FileName>ViewModel\Pages\OptionsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.Speech.Speech">
+    <Position X="19" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAgAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Speech\Speech.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeechRecognizer.SpeechBinding">
+    <Position X="13.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAgAAAAAQAgAAAAAAAEAABgAAEAAAAAI=</HashCode>
+      <FileName>ViewModel\Speech\SpeechBinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeechRecognizer.SpeechGesture">
+    <Position X="15.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Speech\SpeechGesture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeechRecognizer.ValueConverters.SpeechGestureConverter" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAIAAAAAAAAgAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Speech\SpeechGestureConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.Calendar" Collapsed="true">
+    <Position X="8.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASAAAAAAAAAAAAAAABwAAAAAAAAAAQAAAAAIBAAA=</HashCode>
+      <FileName>ViewModel\UserControls\Calendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.DayChangedEventArgs" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\Calendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.Day" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAIAAAACQACAAkAAgAAABAAAAAQAAIAA=</HashCode>
+      <FileName>ViewModel\UserControls\Day.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay1ViewModel" Collapsed="true">
+    <Position X="8.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay1ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay2ViewModel" Collapsed="true">
+    <Position X="10" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay2ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay3ViewModel" Collapsed="true">
+    <Position X="4.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay3ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay4ViewModel" Collapsed="true">
+    <Position X="6.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay4ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay5ViewModel" Collapsed="true">
+    <Position X="8.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay5ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay6ViewModel" Collapsed="true">
+    <Position X="10" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay6ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.NextDay7ViewModel" Collapsed="true">
+    <Position X="4.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAQAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\NextDay7ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.TaskViewModel" Collapsed="true">
+    <Position X="4.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAIAAQACAAAAAAAAAAAAEAABCAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\TaskViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.UserControls.TodayControlViewModel" Collapsed="true">
+    <Position X="8.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>ViewModel\UserControls\TodayControlViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="senia1._2.ViewModel.Window.CurrentUser" Collapsed="true">
+    <Position X="6.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>ViewModel\Window\CurrentUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="senia1._2.Repositories.IRepository&lt;T&gt;">
+    <Position X="25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIGAAA=</HashCode>
+      <FileName>Repositories\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

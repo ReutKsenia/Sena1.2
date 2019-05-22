@@ -6,13 +6,12 @@ using senia1._2.Model;
 
 namespace senia1._2.Repositories
 {
-    class EFTaskRepository : ITaskRepository
+    class EFTaskRepository : IRepository<Task>
     {
         private ToDoEntities1 context;
-
-        public EFTaskRepository()
+        public EFTaskRepository(ToDoEntities1 context)
         {
-            context = new ToDoEntities1();
+            this.context = context;
         }
 
         public void add(Task task)
@@ -37,11 +36,6 @@ namespace senia1._2.Repositories
             return context.Task.Where(x => x.ListId == id).ToList();
         }
 
-        public IEnumerable<Task> getByCategory(string category)
-        {
-            return context.Task.Where(x => x.Category == category).ToList();
-        }
-
         public void update(Task oldTask, Task newTask)
         {
             var tmp = context.Task.FirstOrDefault(x => x.id == oldTask.id);
@@ -62,11 +56,6 @@ namespace senia1._2.Repositories
         {
             return context.Task.FirstOrDefault(x => x.id == id);
 
-        }
-
-        public IEnumerable<Task> getByValueAndCategory(string value, string category)
-        {
-            return context.Task.Where(x => x.Category == category && x.Value == value).ToList();
         }
     }
 }

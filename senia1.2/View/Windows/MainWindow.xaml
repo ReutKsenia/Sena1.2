@@ -6,6 +6,8 @@
         xmlns:viewmodel="clr-namespace:senia1._2.ViewModel"
         xmlns:list ="clr-namespace:senia1._2.View.UserControls"
         xmlns:local="clr-namespace:senia1._2"
+        xmlns:speech1="clr-namespace:senia1._2.ViewModel.Speech"
+        xmlns:speech11="clr-namespace:SpeechRecognizer"
         mc:Ignorable="d"
         Title="MainWindow" 
         AllowsTransparency="True" 
@@ -22,6 +24,18 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
+    <Window.InputBindings>
+        <speech11:SpeechBinding Command="{Binding AddFoto_Click}" Gesture="изменить фото"/>
+        <speech11:SpeechBinding Command="{Binding MenuToday_Click}" Gesture="сегодня"/>
+        <speech11:SpeechBinding Command="{Binding MenuNextSevanDays_Click}" Gesture="следующие 7 дней"/>
+        <speech11:SpeechBinding Command="{Binding MenuCalendar_Click}" Gesture="календарь"/>
+        <speech11:SpeechBinding Command="{Binding MenuNotepad_Click}" Gesture="блокнот"/>
+        <speech11:SpeechBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Gesture="выйти из приложения"/>
+        <speech11:SpeechBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" Gesture="во весь экран"/>
+        <speech11:SpeechBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" Gesture="свернуть"/>
+        <speech11:SpeechBinding Command="{Binding GetTime}" Gesture="который час"/>
+        <speech11:SpeechBinding Command="{Binding Options_Click}" Gesture="настройки"/>
+    </Window.InputBindings>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="OnCloseWindow"/>
         <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="OnMaximizeWindow"/>
@@ -43,55 +57,56 @@
                             Width="278" 
                             Margin="0,0,0.4,0"
                             Background="{DynamicResource VioletGadientBrush}">
-                            <StackPanel
+                            <Grid>
+                                <StackPanel
                                 HorizontalAlignment="Left" 
                                 ScrollViewer.HorizontalScrollBarVisibility="Visible" 
                                 ScrollViewer.CanContentScroll="True" 
                                 RenderTransformOrigin="0.5,0.5" 
                                 Width="278">
-                                <Grid>
-                                    <Ellipse
+                                    <Grid>
+                                        <Ellipse
                                     Visibility="Hidden"
                                     HorizontalAlignment="Left" 
                                     Height="150" 
                                     Margin="65,30.587,0,0" 
                                     VerticalAlignment="Top" 
                                     Width="150">
-                                        <Ellipse.Fill>
-                                            <ImageBrush  ImageSource="/senia1.2;component/View/Images/doutzen-kroes-victoria-s-7073.jpg" Stretch="UniformToFill"/>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <Button
+                                            <Ellipse.Fill>
+                                                <ImageBrush  ImageSource="/senia1.2;component/View/Images/doutzen-kroes-victoria-s-7073.jpg" Stretch="UniformToFill"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <Button
                                         Margin="1,30,0,0" 
                                         Height="150" 
                                         Width="150"
                                         Template="{DynamicResource ButtonControl}"
                                         Command="{Binding AddFoto_Click}">
-                                        <Grid>
-                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                <ContentControl
+                                            <Grid>
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <ContentControl
                                                 Content="{DynamicResource PlusIcon}" 
                                                 Background="{DynamicResource BaseWhiteBrush}" 
                                                 Width="50" 
                                                 Height="50"/>
-                                                <Label 
+                                                    <Label 
                                                     Content="Добавить фото" 
                                                     HorizontalAlignment="Center" 
                                                     VerticalAlignment="Center" 
                                                     Foreground="{DynamicResource BaseWhiteBrush}" 
                                                     FontSize="{DynamicResource Big}"/>
-                                            </StackPanel>
-                                            <Ellipse
+                                                </StackPanel>
+                                                <Ellipse
                                                 Height="150" 
                                                 Width="150">
-                                                <Ellipse.Fill>
-                                                    <ImageBrush  ImageSource="{Binding Image}" Stretch="UniformToFill"/>
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Label 
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush  ImageSource="{Binding Image}" Stretch="UniformToFill"/>
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                    </Grid>
+                                    <Label 
                                     Content="{Binding UserName}" 
                                     HorizontalAlignment="Left" 
                                     Height="54.561" 
@@ -102,74 +117,74 @@
                                     FontSize="{DynamicResource Regular}" 
                                     VerticalContentAlignment="Center" 
                                     HorizontalContentAlignment="Center"/>
-                                <RadioButton
+                                    <RadioButton
                                     Template="{DynamicResource RadioButtonMenu}"
                                     Command="{Binding MenuToday_Click}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image 
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image 
                                             Source="/senia1.2;component/View/Images/today.png" 
                                             Height="54"
                                             Margin="3,0,0,0" Width="65" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock 
+                                            <TextBlock 
                                             Text="Сегодня"
                                             Foreground="{DynamicResource BaseWhiteBrush}"
                                             FontSize="{DynamicResource H1}" 
                                             VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </RadioButton>
-                                <RadioButton
+                                        </StackPanel>
+                                    </RadioButton>
+                                    <RadioButton
                                     Template="{DynamicResource RadioButtonMenu}"
                                     Height="61"
                                     Command="{Binding MenuNextSevanDays_Click}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image 
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image 
                                             Source="/senia1.2;component/View/Images/icons8-список-задач-64.png"
                                             Margin="13,3,0,0" Height="48" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock 
+                                            <TextBlock 
                                             Text="Следующие 7 дней"
                                             Foreground="{DynamicResource BaseWhiteBrush}"
                                             FontSize="{DynamicResource H1}" 
                                             VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" 
                                             Margin="9,0,0,0"/>
-                                    </StackPanel>
-                                </RadioButton>
-                                <RadioButton
+                                        </StackPanel>
+                                    </RadioButton>
+                                    <RadioButton
                                     Template="{DynamicResource RadioButtonMenu}"
                                     Height="61"
                                     Command="{Binding MenuCalendar_Click}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image 
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image 
                                             Source="/senia1.2;component/View/Images/icons8-календарь-80.png"
                                             Margin="10,1,0,-0.2" Width="57"/>
-                                        <TextBlock 
+                                            <TextBlock 
                                             Text="Календарь"
                                             Foreground="{DynamicResource BaseWhiteBrush}"
                                             FontSize="{DynamicResource H1}" 
                                             VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" 
                                             Margin="5,0,0,0"/>
-                                    </StackPanel>
-                                </RadioButton>
-                                <RadioButton
+                                        </StackPanel>
+                                    </RadioButton>
+                                    <RadioButton
                                     Template="{DynamicResource RadioButtonMenu}"
                                     Height="61"
                                     Command="{Binding MenuNotepad_Click}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image 
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image 
                                             Source="/senia1.2;component/View/Images/icons8-журнал-80.png"
                                             Margin="10,1,0,-0.2" Width="61"/>
-                                        <TextBlock 
+                                            <TextBlock 
                                             Text="Блокнот"
                                             Foreground="{DynamicResource BaseWhiteBrush}"
                                             FontSize="{DynamicResource H1}" 
                                             VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" 
                                             Margin="5,0,0,0"/>
-                                    </StackPanel>
-                                </RadioButton>
-                                <Grid Height="230" Margin="0,0,0.4,0">
-                                    <Expander x:Name="exp" 
+                                        </StackPanel>
+                                    </RadioButton>
+                                    <Grid Height="230" Margin="0,0,0.4,0">
+                                        <Expander x:Name="exp" 
                                     Height="230" 
                                     VerticalAlignment="Top" 
                                     Width="277"
@@ -181,16 +196,16 @@
                                     ScrollViewer.HorizontalScrollBarVisibility="Visible" 
                                     Cursor="Hand"
                                     Header="Списки дел" Margin="1,0,0,0">
-                                        <Grid Height="155">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <ScrollViewer Grid.Row="0" Grid.RowSpan="3" Height="145" VerticalAlignment="Top">
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="3">
-                                                    <StackPanel>
-                                                        <ListBox
+                                            <Grid Height="155">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <ScrollViewer Grid.Row="0" Grid.RowSpan="3" Height="145" VerticalAlignment="Top">
+                                                    <StackPanel Grid.Row="0" Grid.RowSpan="3">
+                                                        <StackPanel>
+                                                            <ListBox
                                                             x:Name="lists"
                                                             FontSize="{DynamicResource Big}"
                                                             Foreground="{DynamicResource BaseWhiteBrush}"
@@ -199,34 +214,34 @@
                                                             ItemsSource="{Binding Lists}"
                                                             SelectionChanged="ListBox_SelectionChanged"
                                                             SelectedItem="{Binding SelectedList}"/>
-                                                    </StackPanel>
-                                                    <Grid x:Name="grid2"
+                                                        </StackPanel>
+                                                        <Grid x:Name="grid2"
                                                         Visibility="{Binding OpacityControl, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed}" Grid.RowSpan="2">
-                                                        <Border 
+                                                            <Border 
                                                             CornerRadius="12" 
                                                             Background="{DynamicResource BaseWhiteBrush}" 
                                                             Margin="0,0,0.4,0" 
                                                             Height="63" 
                                                             VerticalAlignment="Bottom">
-                                                            <Grid 
+                                                                <Grid 
                                                                 Grid.RowSpan="3" 
                                                                 Width="175" 
                                                                 VerticalAlignment="Top" 
                                                                 Margin="0,10,-0.6,0" 
                                                                 Height="60" HorizontalAlignment="Left">
 
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="0*"/>
-                                                                    <RowDefinition Height="13*"/>
-                                                                    <RowDefinition Height="17*"/>
-                                                                </Grid.RowDefinitions>
-                                                                <Border 
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="0*"/>
+                                                                        <RowDefinition Height="13*"/>
+                                                                        <RowDefinition Height="17*"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Border 
                                                                     Background="#FFFFFFFF" 
                                                                     CornerRadius="8" 
                                                                     Margin="10,0,10,0.4" 
                                                                     VerticalAlignment="Bottom" 
                                                                     Height="26" BorderBrush="{DynamicResource VioletBrush}" BorderThickness="2" Grid.Row="1">
-                                                                    <TextBox 
+                                                                        <TextBox 
                                                                         x:Name="TitleList"
                                                                         Margin="5.4,-1.6,0,-2.8" 
                                                                         TextWrapping="Wrap" 
@@ -239,8 +254,8 @@
                                                                         SelectionBrush="{x:Null}" 
                                                                         BorderBrush="{x:Null}" HorizontalAlignment="Left"
                                                                         />
-                                                                </Border>
-                                                                <Button 
+                                                                    </Border>
+                                                                    <Button 
                                                                     x:Name="AddList"
                                                                     Content="Добавить" 
                                                                     Grid.Column="0" 
@@ -257,7 +272,7 @@
                                                                     FontSize="{DynamicResource Smal}"
                                                                     Margin="10,0.6,0,0" 
                                                                     Cursor="Hand" Click="AddList_Click"/>
-                                                                <Button 
+                                                                    <Button 
                                                                     x:Name="Abort"
                                                                     Content="Отмена" 
                                                                     HorizontalAlignment="Left" 
@@ -271,31 +286,56 @@
                                                                     Background="{x:Null}" 
                                                                     BorderBrush="{x:Null}" 
                                                                     Command="{Binding Abort_Click}" Click="Abort_Click"/>
-                                                            </Grid>
-                                                        </Border>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </ScrollViewer>
-                                        </Grid>
-                                    </Expander>
-                                    <Button
+                                                                </Grid>
+                                                            </Border>
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Expander>
+                                        <Button
                                         Template="{DynamicResource ButtonControl}" 
                                         Height="Auto" 
                                         Margin="215,0,10,182" 
                                         Click="Button_Click">
-                                        <Button.Background>
-                                            <SolidColorBrush Color="Black" Opacity="0"/>
-                                        </Button.Background>
-                                        <ContentControl
+                                            <Button.Background>
+                                                <SolidColorBrush Color="Black" Opacity="0"/>
+                                            </Button.Background>
+                                            <ContentControl
                                             Content="{DynamicResource PlusIcon1}" 
                                             Background="{DynamicResource BaseWhiteBrush}" Width="50" Height="50" 
                                             />
-                                    </Button>
-                                </Grid>
-                                <StackPanel Orientation="Horizontal" Height="42">
-                                    
+                                        </Button>
+                                    </Grid>
+
                                 </StackPanel>
-                            </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="33" VerticalAlignment="Bottom" Margin="0,0,0.4,4">
+                                    <Button
+                                        Template="{DynamicResource ButtonControl}"
+                                        Content="{DynamicResource Options}" 
+                                        Height="Auto" 
+                                        Margin="7,0,0,-0.2" 
+                                        Width="35"
+                                        ToolTip="Настройки"
+                                        Command="{Binding Options_Click}"/>
+                                    <Button
+                                        Template="{DynamicResource ButtonControl}"
+                                        Content="{DynamicResource Help}" 
+                                        Height="Auto" 
+                                        Margin="0,0,0,-0.2" 
+                                        Width="37"
+                                        ToolTip="О программе"/>
+                                    <!--<RadioButton
+                                        x:Name="RecognizeStart"
+                                        Content="{DynamicResource Recognize}" 
+                                        Height="Auto" 
+                                        Margin="-2,0,0,-3.2" 
+                                        Width="36"
+                                        ToolTip="Голосовое управление" 
+                                        Click="RecognizeStart_Click_1"
+                                        IsChecked="True"/>-->
+                                </StackPanel>
+                            </Grid>
                         </Border>
                         <Label
                             Content="{Binding Day}" 
